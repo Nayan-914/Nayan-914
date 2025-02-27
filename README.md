@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Nayan Kumar Gautam</h1>
-<h3 align="center">A passionate frontend developer from Nepal India</h3>
+<h3 align="center">A passionate frontend developer from Nepal</h3>
 
 - 📫 How to reach me **024neb@sxc.edu.np**
 
