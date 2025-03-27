@@ -160,3 +160,31 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+ .program {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        pre {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+        .output-section {
+            background-color: #e8f4f8;
+            border: 1px dashed #7f8c8d;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        .output-upload {
+            margin-top: 10px;
+        }
+        .output-image {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
