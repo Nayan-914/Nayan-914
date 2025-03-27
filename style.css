@@ -179,12 +179,3 @@ button:hover {
             border-radius: 5px;
             padding: 15px;
             margin-top: 30px;
-        }
-        .output-upload {
-            margin-top: 10px;
-        }
-        .output-image {
-            max-width: 100%;
-            margin-top: 10px;
-            display: none;
-        }
