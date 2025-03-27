@@ -274,6 +274,164 @@
         <li>Step 4: Display simple interest(i)</li>
         <li>Step 5: Stop</li>
     </ol>
+    <h3>C Programs</h3>
+        <h2>1. Check if a Number is Prime</h2>
+        <div class="program">
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i, flag = 1;
+    
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    if (n == 0 || n == 1)
+        flag = 0;
+    
+    for (i = 2; i <= n/2; ++i) {
+        if (n % i == 0) {
+            flag = 0;
+            break;
+        }
+    }
+    
+    if (flag)
+        printf("%d is a prime number.", n);
+    else
+        printf("%d is not a prime number.", n);
+    
+    return 0;
+}</code></pre>
+        </div>
+        
+        <div class="output-section">
+            <h3>Output for Prime Number Check</h3>
+            <input type="file" class="output-upload" accept="image/*" onchange="displayOutput(this, 'prime-output')">
+            <img id="prime-output" class="output-image" alt="Prime Number Output">
+        </div>
+
+        <h2>2. Calculate Factorial of a Number</h2>
+        <div class="program">
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i;
+    unsigned long long fact = 1;
+    
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    
+    if (n < 0)
+        printf("Error! Factorial of a negative number doesn't exist.");
+    else {
+        for (i = 1; i <= n; ++i) {
+            fact *= i;
+        }
+        printf("Factorial of %d = %llu", n, fact);
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+        
+        <div class="output-section">
+            <h3>Output for Factorial Calculation</h3>
+            <input type="file" class="output-upload" accept="image/*" onchange="displayOutput(this, 'factorial-output')">
+            <img id="factorial-output" class="output-image" alt="Factorial Output">
+        </div>
+
+        <h2>3. Check if a Number is Palindrome</h2>
+        <div class="program">
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, reversed = 0, remainder, original;
+    
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    original = n;
+    
+    while (n != 0) {
+        remainder = n % 10;
+        reversed = reversed * 10 + remainder;
+        n /= 10;
+    }
+    
+    if (original == reversed)
+        printf("%d is a palindrome.", original);
+    else
+        printf("%d is not a palindrome.", original);
+    
+    return 0;
+}</code></pre>
+        </div>
+        
+        <div class="output-section">
+            <h3>Output for Palindrome Check</h3>
+            <input type="file" class="output-upload" accept="image/*" onchange="displayOutput(this, 'palindrome-output')">
+            <img id="palindrome-output" class="output-image" alt="Palindrome Output">
+        </div>
+
+        <h2>4. Generate Fibonacci Series</h2>
+        <div class="program">
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i, n, t1 = 0, t2 = 1, nextTerm;
+    
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    
+    printf("Fibonacci Series: ");
+    
+    for (i = 1; i <= n; ++i) {
+        printf("%d, ", t1);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+        
+        <div class="output-section">
+            <h3>Output for Fibonacci Series</h3>
+            <input type="file" class="output-upload" accept="image/*" onchange="displayOutput(this, 'fibonacci-output')">
+            <img id="fibonacci-output" class="output-image" alt="Fibonacci Output">
+        </div>
+
+        <!-- Perfect Number Check -->
+        <h2>5. Check if a Number is Perfect</h2>
+        <div class="program">
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i, sum = 0;
+    
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    for (i = 1; i < n; ++i) {
+        if (n % i == 0)
+            sum += i;
+    }
+    
+    if (sum == n)
+        printf("%d is a perfect number.", n);
+    else
+        printf("%d is not a perfect number.", n);
+    
+    return 0;
+}</code></pre>
+        </div>
+        
+        <div class="output-section">
+            <h3>Output for Perfect Number Check</h3>
+            <input type="file" class="output-upload" accept="image/*" onchange="displayOutput(this, 'perfect-output')">
+            <img id="perfect-output" class="output-image" alt="Perfect Number Output">
+        </div>
+    </div>
 </main>
 </body>
 </html>
