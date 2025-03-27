@@ -261,6 +261,182 @@
         <li>Algorithm should not depend upon any programming language.</li>
         <li>Algorithm should terminate after finite steps.</li>
     </ul>
+    <h2>Loop</h2>
+    <p>Loops in programming are used to repeat a block of code until the specified condition is met. A loop statement allows programmers to execute a statement or group of statements multiple times without repetition of code. Repetitive tasks are common in programming, and loops are essential to save time and minimize errors. In C programming, the keywords while, do–while and for are provided to implement loops. Looping constructs are an important part of any processing logic, as they help in performing the same process again and again. A C programmer should be well acquainted with implementing and controlling the looping construct.</p>
+    <p>Programming languages provide various control structures that allow for more complicated execution paths. A loop statement allows us to execute a statement or group of statements multiple times.</p>
+
+    <h2>Types of Loop</h2>
+    
+    <h3>1. For loop</h3>
+    <p>For loop in C programming is a repetition control structure that allows programmers to write a loop that will be executed a specific number of times. for loop enables programmers to perform n number of steps together in a single line.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>for (initialize expression; condition; increment or decrement)
+{
+    statements
+}</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int i;
+    for (i=1;i&lt;=10;i++)
+    {
+        printf("%d\t",i);
+    }
+    printf("\nThe program is executed by NAYAN KUMAR GAUATM");
+    return 0;    
+}</code></pre>
+    
+    <p><strong>Output:</strong></p>
+    <div class="output">
+        1 2 3 4 5 6 7 8 9 10<br>
+        The program is executed by NAYAN KUMAR GAUATM
+    </div>
+
+    <h3>2. Nested For loop</h3>
+    <p>Nested for loop refers to any type of loop that is defined inside a 'for' loop.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>for (initialization; condition; increment or decrement)
+{
+   for (initialization; condition increment or decrement)
+      // statement of inside loop
+   }
+   // statement of outer loop
+}</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int i,j;
+    for (i=1;i&lt;=5;i++)
+    {
+        for(j=1;j&lt;=i;j++)
+        {
+            printf("%d",i);
+        }
+        printf("\n");
+    }
+    printf("The program is executed by NAYAN KUMAR GAUATM");
+    return 0;
+}</code></pre>
+
+
+    <h3>3. While loop</h3>
+    <p>While loop does not depend upon the number of iterations. In for loop the number of iterations was previously known to us but in the While loop, the execution is terminated on the basis of the test condition. If the test condition will become false then it will break from the while loop else body will be executed.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>initialization;
+while (condition)
+{
+    Statement
+    increment or decrement;
+}</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int i=2;
+    while(i&lt;=20)    {
+        printf("%d\n",i);
+        i=i+2;    }
+    printf("\nThe program is executed by NAYAN KUMAR GAUATM");
+    return 0;
+}</code></pre>
+  
+    <h3>4. Nested While loop</h3>
+    <p>A nested while loop refers to any type of loop that is defined inside a 'while' loop.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>while(condition) {
+
+   while(condition) {
+      
+      // statement of inside loop
+   }
+
+   // statement of outer loop
+}</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include &lt;stdio.h&gt;
+int main() 
+{
+   int i = 2;
+   int j;
+
+   do {
+      j = 1;
+      do {
+         printf("%d * %d = %d\n", i, j, i*j);
+         j++;
+      } while(j &lt;=10);
+      i++;
+   } while(i &lt;= 3);
+   printf("\nThe program is executed by NAYAN KUMAR GAUATAM");
+   return 0;
+}</code></pre>
+    
+
+
+    <h3>5. Do while loop</h3>
+    <p>The do-while loop is similar to a while loop but the only difference lies in the do-while loop test condition which is tested at the end of the body. In the do-while loop, the loop body will execute at least once irrespective of the test condition.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>initialization_expression;
+do
+{
+    Statement
+    
+    
+    condition;
+
+} while (condition);</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int i=1;
+    do
+    {
+        printf("%d\n",i);
+        i=i+2;
+    }while(i&lt;=20);        
+    printf("The program is executred by NAYAN KUMAR GAUATM");
+    return 0;
+}</code></pre>
+   
+    <h3>6. Nested Do while loop</h3>
+    <p>A nested do-while loop refers to any type of loop that is defined inside a do-while loop.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>do{
+   do{
+      // statement of inside loop
+   }while(condition);
+   // statement of outer loop
+}while(condition);</code></pre>
+    
+    <p><strong>Example Program:</strong></p>
+    <pre><code>#include &lt;stdio.h&gt;
+int main ()
+{
+    int i = 1, j = 1;
+    while (i &lt;= 5)
+    {
+       j = 1;
+       while (j &lt;= 5)
+    {
+       printf ("%d ", j);
+       j++;
+    }
+       printf ("\n");
+       i++;
+    }
+    printf("\nThe program is executed by NAYAN KUMAR GAUATAM");
+    return 0;
+}</code></pre>
+    
+
 
     <h2>Arrays in C</h2>
     
@@ -269,11 +445,6 @@
     <p>The size of the array is also called the length of the array. It must be specified in the declaration itself. Once declared, the size of a C array cannot be changed. When an array is declared, the compiler allocates a continuous block of memory required to store the declared number of elements.</p>
     
     <h2>Array declaration (1D)</h2>
-    <h1>Arrays in C</h1>
-    
-    <p>Arrays in C are a kind of data structure that can store a fixed-size sequential collection of elements of the same data type. They can store different types of data such as int, char, double, float, etc. It also has the capability to store the collection of derived data types, such as pointers, structure, etc. Instead of declaring separate variables for each element, arrays provide a structured way to handle data collection, making programs more efficient and easier to read. They are beneficial for tasks like managing lists, performing mathematical operations on datasets, and handling data sequences in loops.</p>
-    
-    <p>The size of the array is also called the length of the array. It must be specified in the declaration itself. Once declared, the size of a C array cannot be changed. When an array is declared, the compiler allocates a continuous block of memory required to store the declared number of elements.</p>
     
     <h2>Array declaration (1D)</h2>
     <p>One-dimensional array is the simplest form of an array, storing elements in a single linear sequence. It can be visualized as a row of elements.</p>
