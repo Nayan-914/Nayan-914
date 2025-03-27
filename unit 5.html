@@ -264,6 +264,67 @@
         <li>Algorithm should terminate after finite steps.</li>
     </ul>
 
+    <h2>Arrays in C</h2>
+    
+    <p>Arrays in C are a kind of data structure that can store a fixed-size sequential collection of elements of the same data type. They can store different types of data such as int, char, double, float, etc. It also has the capability to store the collection of derived data types, such as pointers, structure, etc. Instead of declaring separate variables for each element, arrays provide a structured way to handle data collection, making programs more efficient and easier to read. They are beneficial for tasks like managing lists, performing mathematical operations on datasets, and handling data sequences in loops.</p>
+    
+    <p>The size of the array is also called the length of the array. It must be specified in the declaration itself. Once declared, the size of a C array cannot be changed. When an array is declared, the compiler allocates a continuous block of memory required to store the declared number of elements.</p>
+    
+    <h2>Array declaration (1D)</h2>
+    <h1>Arrays in C</h1>
+    
+    <p>Arrays in C are a kind of data structure that can store a fixed-size sequential collection of elements of the same data type. They can store different types of data such as int, char, double, float, etc. It also has the capability to store the collection of derived data types, such as pointers, structure, etc. Instead of declaring separate variables for each element, arrays provide a structured way to handle data collection, making programs more efficient and easier to read. They are beneficial for tasks like managing lists, performing mathematical operations on datasets, and handling data sequences in loops.</p>
+    
+    <p>The size of the array is also called the length of the array. It must be specified in the declaration itself. Once declared, the size of a C array cannot be changed. When an array is declared, the compiler allocates a continuous block of memory required to store the declared number of elements.</p>
+    
+    <h2>Array declaration (1D)</h2>
+    <p>One-dimensional array is the simplest form of an array, storing elements in a single linear sequence. It can be visualized as a row of elements.</p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>data_type array_name[size];</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>int array[20]; // Declares an array of size 20</code></pre>
+    
+    <h2>Array declaration (2D)</h2>
+    <p>A 2D array organizes data in rows and columns, making it ideal for matrix representation.</p>
+    <p><strong>Declaration</strong></p>
+    <pre><code>data_type array_name[rows][columns];</code></pre>
+    <p><strong>Example</strong></p>
+    <pre><code>int array [5][9]; // Declares a 2D array with 5 rows and 9 columns</code></pre>
+    
+    <h2>Array initialization (1D)</h2>
+    <p><strong>Initialization</strong></p>
+    <pre><code>int array[7] = {1, 2, 3, 4, 5, 6, 7};</code></pre>
+    
+    <h2>Array initialization (2D)</h2>
+    <p><strong>Initialization</strong></p>
+    <pre><code>int array[2][3] = 
+{
+    {1, 2, 3},
+    {4, 5, 6}
+};</code></pre>
+
+    <h2>Character array</h2>
+    <p>A character array in C is a way to store a group of characters, like letters and symbols. A character array is like a row of boxes where each box can hold one character. Character arrays are an important concept in the C programming language. They allow you to store & manipulate sequences of characters, which are fundamental in many programming tasks. The first box is number 0, the second box is number 1, and so on. To show that the end of the string has been reached, we use a special character called the null terminator (\0).</p>
+    
+    <h3>Initialization of character array</h3>
+    <p>You can initialize a one-dimensional character array by specifying:</p>
+    <ul>
+        <li>A brace-enclosed comma-separated list of constants, each of which can be contained in a character</li>
+        <li>A string constant (braces surrounding the constant are optional)</li>
+    </ul>
+    <p>Initializing a string constant places the null character (\0) at the end of the string if there is room or if the array dimensions are not specified.</p>
+    <p>The following definitions show character array initializations:</p>
+    <pre><code>char array[] = { 'J', 'a', 'n' };
+char array[] = { "Jan" };
+char array[] = "Jan";</code></pre>
+    
+    <h3>Declaration of character array</h3>
+    <p>To declare a character array, you specify the type char, followed by the array name and its size in square brackets. Here's the syntax:</p>
+    <pre><code>char arrayName[size];</code></pre>
+    <p><strong>Example:</strong></p>
+    <pre><code>char array[10]; // This declares an array that can hold 10 characters</code></pre>
+
+
     <h4>Examples:</h4>
 
     <p>1. Write an algorithm to calculate simple interest.</p>
