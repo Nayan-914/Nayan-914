@@ -1,23 +1,18 @@
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.7;
-    margin: 5px;
-    padding: 10px;
-    background-color: #f7f7f7;
-    color: #333;
-}/* === Dark Anime-Themed CSS === */
+
 body {
     font-family: 'Noto Sans JP', 'Arial', sans-serif;
     line-height: 1.7;
     margin: 0;
     padding: 0;
     background-color: #121212;
-    background-image: url('bg.webp');
+
     background-size: cover;
     background-attachment: fixed;
     color: #e0e0e0;
 }
-
+bi{    
+background-image: url('bg.webp');
+}
 header h1 {
     font-size: 2.5em;
     font-weight: 700;
