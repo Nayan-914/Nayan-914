@@ -190,6 +190,15 @@
     <p>As we know, information is obtained after processing data. Hence, we need data processing for converting data into information. Therefore, the systematic and scientific arrangement and organization of data so that we can retrieve it whenever required quickly and easily is called a database. A database is an organized collection of data for converting data and information so that it can give some meaningful results. For eg, Dictionary, Mark ledger, Census, Telephone directory etc.</p>
 
     <p>Since manual collection and organization of data is time consuming, unsecured, and complex, there is an application program which helps to maintain a database i.e. a systematic and scientific organization and collection of data. so, we can retrieve any piece of information within a fraction of a time without any effort. Hence,</p>
-</body>
 </main>
+      <script>
+        fetch('top.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+            })
+            .catch(err => console.error("Failed to load navbar:", err));
+    </script>
+</body>
+
 </html>
