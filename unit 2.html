@@ -4,6 +4,16 @@
         <Title>Unit 2</Title>
     <link rel="stylesheet" href="style.css">
 <body>
+          <div id="navbar-placeholder"></div>
+
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
         <h1>Chapter 2: Number Sysyem And Boolean Algebra</h1>
 <main>
     <h1>1's and 2's Complement</h1>
@@ -679,13 +689,6 @@
         </tbody>
     </table>
     </main>
-      <script>
-        fetch('top.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-container').innerHTML = html;
-            })
-            .catch(err => console.error("Failed to load navbar:", err));
-    </script>
+
 </body>
 </html>
