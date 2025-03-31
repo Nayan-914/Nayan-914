@@ -5,6 +5,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+          <div id="navbar-placeholder"></div>
+
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
         <h1>Chapter 1: Computer System</h1>
     <main>
 
@@ -146,13 +156,6 @@
             <p>The computer has become an integral part of our lives and is helping us in improving the standard living, enhancing the quality products, providing better healthcare, assisting in teaching and learning, and other. However, computers have many limitations like lack of intelligence, lack of reasoning capabilities, and other.</p>
 
     </main>
-  <script>
-        fetch('top.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-container').innerHTML = html;
-            })
-            .catch(err => console.error("Failed to load navbar:", err));
-    </script>
+
 </body>
 </html>
