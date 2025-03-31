@@ -107,24 +107,16 @@
 
         </div>
   </div>
+<div id="navbar-placeholder"></div>
+
 <script>
-    // Load navbar after page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('top.html')
-        .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
-          return response.text();
+    fetch('nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
         })
-        .then(html => {
-          document.getElementById('navbar-container').innerHTML = html;
-        })
-        .catch(err => {
-          console.error("Failed to load navbar:", err);
-          // Fallback in case fetch fails
-          document.getElementById('navbar-container').innerHTML = 
-            '<div style="background:red;color:white;padding:10px;text-align:center;">Error loading navigation</div>';
-        });
-    });
-  </script>
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
+
 </body>
 </html>
