@@ -4,6 +4,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+	  <div id="navbar-placeholder"></div>
+
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
     <div class="container">
         <h1>C Programs Collection</h1>
         
@@ -242,24 +252,6 @@ int main() {
             <img src="lt.png" class="img" alt="Lower Triangle Output">
         </div>
     </div>
-<script>
-    // Load navbar after page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('top.html')
-        .then(response => {
-          if (!response.ok) throw new Error('Network response was not ok');
-          return response.text();
-        })
-        .then(html => {
-          document.getElementById('navbar-container').innerHTML = html;
-        })
-        .catch(err => {
-          console.error("Failed to load navbar:", err);
-          // Fallback in case fetch fails
-          document.getElementById('navbar-container').innerHTML = 
-            '<div style="background:red;color:white;padding:10px;text-align:center;">Error loading navigation</div>';
-        });
-    });
-  </script>
+
 </body>
 </html>
