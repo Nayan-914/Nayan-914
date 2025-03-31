@@ -6,7 +6,16 @@
 </head>
 
 <body>
+      <div id="navbar-placeholder"></div>
 
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
     <h2>Chapter 6: Web Technology - I</h2>
 <main>
     <h3>Introduction to the Internet</h3>
@@ -191,14 +200,5 @@
 
     <p>Since manual collection and organization of data is time consuming, unsecured, and complex, there is an application program which helps to maintain a database i.e. a systematic and scientific organization and collection of data. so, we can retrieve any piece of information within a fraction of a time without any effort. Hence,</p>
 </main>
-      <script>
-        fetch('top.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-container').innerHTML = html;
-            })
-            .catch(err => console.error("Failed to load navbar:", err));
-    </script>
 </body>
-
 </html>
