@@ -1,132 +1,245 @@
-
 body {
     font-family: 'Noto Sans JP', 'Arial', sans-serif;
     line-height: 1.7;
     margin: 0;
     padding: 0;
     background-color: #121212;
+    background-image: url('p.jpg');
     background-size: cover;
     background-attachment: fixed;
+    background-blend-mode: overlay;
     color: #e0e0e0;
+    min-height: 100vh;
+    position: relative;
 }
 
+/* Anime-inspired glowing elements */
+::selection {
+    background: #ff4444;
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Header with anime-style impact */
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     font-weight: 700;
     color: #ff4444;
     border-bottom: 4px solid #ff4444;
-    text-shadow: 0 2px 4px rgba(255, 68, 68, 0.3);
+    text-shadow: 0 2px 10px rgba(255, 68, 68, 0.5);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 1px;
 }
 
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff4444, transparent);
+}
+
+/* Main content area with glassmorphism effect */
 main {
     max-width: 1000px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: rgba(26, 26, 26, 0.9);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(26, 26, 26, 0.85);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
+/* Anime-style section glow */
+main::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff4444, #ff8c66, #ff4444);
+    z-index: -1;
+    border-radius: 18px;
+    opacity: 0.2;
+    animation: glow 8s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Headings with anime-style impact */
 h1, h2 {
     color: #ff4444;
     border-bottom: 2px solid #ff4444;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
+    padding-bottom: 12px;
+    margin-bottom: 30px;
     font-weight: 700;
     font-family: 'Noto Sans JP', sans-serif;
+    text-shadow: 0 2px 5px rgba(255, 68, 68, 0.2);
 }
 
 h3, h4 {
     color: #ff6666;
-    margin-top: 25px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 25px;
     font-weight: 600;
+    position: relative;
+    padding-left: 15px;
 }
 
+h3::before, h4::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #ff4444;
+    font-size: 0.8em;
+}
+
+/* Text elements */
 p {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 1.1em;
     line-height: 1.8;
     padding: 10px 0;
     color: #d0d0d0;
 }
 
+/* Lists with anime-style bullets */
 ul, ol {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     padding-left: 30px;
 }
 
 ul {
-    list-style-type: square;
-    color: #d0d0d0;
+    list-style-type: none;
+}
+
+ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #ff4444;
 }
 
 ol {
     list-style-type: decimal;
+    color: #d0d0d0;
 }
 
 li {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-size: 1.1em;
     line-height: 1.6;
     color: #d0d0d0;
 }
 
-b {
+/* Highlight text */
+b, strong {
     font-weight: 700;
     color: #ff4444;
+    text-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
 }
 
+/* Tables with anime-style headers */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 30px;
+    margin: 30px 0;
     background-color: rgba(40, 40, 40, 0.8);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 th, td {
     border: 1px solid #333;
-    padding: 14px;
+    padding: 16px;
     text-align: left;
     font-size: 1.1em;
     color: #e0e0e0;
 }
 
 th {
-    background-color: #ff4444;
+    background: linear-gradient(to right, #ff4444, #ff6b6b);
     color: #fff;
     font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 tr:nth-child(even) {
     background-color: rgba(50, 50, 50, 0.6);
 }
 
+/* Boxed sections with glow effect */
 .boxed-section {
     background-color: rgba(40, 40, 40, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
 }
 
+.boxed-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff4444, #ff8c66);
+}
+
+/* Links with anime-style hover effect */
 a {
     color: #ff6666;
     text-decoration: none;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 600;
+    position: relative;
 }
 
 a:hover {
     color: #ff4444;
-    text-shadow: 0 0 8px rgba(255, 68, 68, 0.5);
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
 }
 
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff4444;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Code blocks with anime terminal style */
 pre {
     background-color: rgba(30, 30, 30, 0.9);
     padding: 20px;
@@ -137,248 +250,163 @@ pre {
     line-height: 1.6;
     color: #e0e0e0;
     font-family: 'Courier New', monospace;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
+pre::before {
+    content: '>';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ff4444;
+    font-weight: bold;
+}
+
+/* Footer with anime-style border */
 footer {
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: rgba(20, 20, 20, 0.95);
     color: #ff4444;
     text-align: center;
-    padding: 20px;
-    position: fixed;
-    bottom: 0;
+    padding: 25px;
     width: 100%;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
-    border-top: 1px solid #333;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid #ff4444;
+    margin-top: 50px;
 }
 
+/* Images with hover effect */
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     border: 1px solid #444;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    filter: brightness(0.9);
 }
 
 img:hover {
     transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 68, 68, 0.3);
+    filter: brightness(1);
 }
 
+/* Buttons with anime-style press effect */
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1.1em;
-    background-color: #ff4444;
+    background: linear-gradient(to right, #ff4444, #ff6b6b);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 68, 68, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
 }
 
 button:hover {
-    background-color: #ff3333;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
 }
 
+button:active {
+    transform: translateY(1px);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Special program sections */
 .program {
     background-color: rgba(30, 30, 30, 0.9);
-    border: 1px solid #444;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
     overflow-x: auto;
+    border-left: 4px solid #ff4444;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Output sections with dashed border glow */
 .output-section {
     background-color: rgba(40, 40, 40, 0.8);
     border: 1px dashed #ff4444;
-    border-radius: 5px;
-    padding: 15px;
-    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 35px;
+    position: relative;
+}
+
+.output-section::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px dashed rgba(255, 68, 68, 0.3);
+    border-radius: 12px;
+    pointer-events: none;
+    animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -100;
+    }
 }
 
 .output-image {
     max-width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
     display: none;
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-header h1 {
-    font-size: 2.5em;
-    font-weight: 700;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 25px;
+        margin: 20px 15px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .top-nav .container {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
 }
-
-main {
-    max-width: 1000px;
-    margin: 5px;
-    padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-
-h1, h2 {
-    color: #007bff;
-    border-bottom: 4px solid #007bff;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    font-weight: 700;
-    font-size: 2em;
-}
-
-h3, h4 {
-    color: #0056b3;
-    margin-top: 25px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 1.5em;
-}
-
-p {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    line-height: 1.8;
-    padding: 10px 0;
-}
-
-ul, ol {
-    margin-bottom: 20px;
-    padding-left: 30px;
-}
-
-ul {
-    list-style-type: square;
-}
-
-ol {
-    list-style-type: decimal;
-}
-
-li {
-    margin-bottom: 12px;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-b {
-    font-weight: 700;
-    color: #007bff;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    border: 1px solid #e2e2e2;
-    padding: 14px;
-    text-align: left;
-    font-size: 1.1em;
-}
-
-th {
-    background-color: #007bff;
-    color: #ffffff;
-    font-weight: 700;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.boxed-section {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    font-weight: 600;
-}
-
-a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-pre {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border: 1px solid #ddd;
-    overflow-x: auto;
-    font-size: 1em;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
-
-footer {
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
- .program {
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
-        pre {
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-        }
-        .output-section {
-            background-color: #e8f4f8;
-            border: 1px dashed #7f8c8d;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 30px;
-        .output-image {
-            max-width: 100%;
-            margin-top: 10px;
-            display: none;
-        }
