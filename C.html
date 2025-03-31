@@ -242,5 +242,13 @@ int main() {
             <img src="lt.png" class="img" alt="Lower Triangle Output">
         </div>
     </div>
+  <script>
+        fetch('top.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+            })
+            .catch(err => console.error("Failed to load navbar:", err));
+    </script>
 </body>
 </html>
