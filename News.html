@@ -102,6 +102,14 @@ The MoU states that both parties agree to strengthen inter-departmental exchange
       </div>
     </div>
   </div>
+    <script>
+        fetch('top.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+            })
+            .catch(err => console.error("Failed to load navbar:", err));
+    </script>
 </body>
 
 </html>
