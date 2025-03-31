@@ -6,7 +6,16 @@
 
 </head>
 <body>
+      <div id="navbar-placeholder"></div>
 
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
     <h1>Chapter 7: Multimedia</h1>
   <main>  
     <div class="section">
@@ -72,14 +81,5 @@
         </ul>
     </div>
 </main>
-          <script>
-        fetch('top.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-container').innerHTML = html;
-            })
-            .catch(err => console.error("Failed to load navbar:", err));
-    </script>
 </body>
-
 </html>
