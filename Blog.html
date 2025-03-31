@@ -80,6 +80,16 @@
   </style>
 </head>
 <body>
+  <div id="navbar-placeholder"></div>
+
+<script>
+    fetch('top.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+</script>
   <div class="blog-container">
     <header>
       <h1>2025 Anime Updates: What to Watch This Year</h1>
@@ -107,16 +117,7 @@
 
         </div>
   </div>
-<div id="navbar-placeholder"></div>
 
-<script>
-    fetch('nav.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading navigation:', error));
-</script>
 
 </body>
 </html>
