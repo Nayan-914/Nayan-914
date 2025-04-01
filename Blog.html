@@ -4,12 +4,19 @@
   <title>Anime Updates With Senpai</title>
   <style>
     body {
-      font-family: 'Times New Roman', sans-serif;
-      background-image: url('bg.webp');
-      background-size: cover;
-      background-attachment: fixed;
-      padding-top: 60px;
-    }
+  font-family: 'Times New Roman', Times, serif;
+  background-image: url('bg.webp');
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #f4f4f4;
+  margin: 0; /* Ensures no unwanted space around the body */
+  padding-top: 60px; /* Prevents content from being hidden behind navbar */
+  display: flex;
+  flex-direction: column; /* Ensures navbar stays above content */
+  min-height: 100vh;
+}
+
+    
   .top-nav {
       background: rgba(26, 26, 26, 0.9);
       padding: 15px 0;
@@ -39,15 +46,7 @@
       background-color: rgba(255, 68, 68, 0.2);
     }
 
-    body {
-      font-family: 'Times New Roman', Times, serif;
-      background-color: #f4f4f4;
-      margin: 0; /* Changed from 10px */
-      padding: 0;
-      display: flex;
-      flex-direction: column; /* Added to make navbar appear above content */
-      min-height: 100vh;
-    }
+  
     .blog-container {
       width: 80%;
       margin: 20px auto;
