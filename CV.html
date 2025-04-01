@@ -5,103 +5,103 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <style>
         /* === Dark Anime-Themed CSS === */
-        :root {
-            --primary-color: #ff4444;
-            --secondary-color: #ff6666;
-            --dark-bg: #121212;
-            --card-bg: rgba(26, 26, 26, 0.9);
-            --text-color: #e0e0e0;
-            --text-light: #f8dada;
-        }
+:root {
+    --primary-color: #ff4444;
+    --secondary-color: #ff6666;
+    --dark-bg: #121212;
+    --card-bg: rgba(26, 26, 26, 0.9);
+    --text-color: #e0e0e0;
+}
 
-        body {
-            font-family: 'Noto Sans JP', 'Arial', sans-serif;
-            background-color: var(--dark-bg);
-             background-image: url('rb.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Noto Sans JP', 'Arial', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('rb.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    padding-top: 60px; /* Prevents navbar overlap */
+}
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 30px;
-            background: var(--card-bg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-        }
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-        }
+/* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
 
-        .pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
-        }
+.pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+}
 
-        .info {
-            flex-grow: 1;
-            margin-left: 20px;
-        }
+.info {
+    flex-grow: 1;
+    margin-left: 20px;
+}
 
-        h1 {
-            margin: 0;
-            color: var(--primary-color);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
+h1 {
+    margin: 0;
+    color: var(--primary-color);
+}
 
-        .section {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(40, 40, 40, 0.8);
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
+/* Sections */
+.section {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(40, 40, 40, 0.8);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
 
-        .section:hover {
-            transform: translateY(-5px);
-        }
+.section:hover {
+    transform: translateY(-5px);
+}
 
-        h2 {
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 8px;
-            color: var(--secondary-color);
-        }
+h2 {
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 8px;
+    color: var(--secondary-color);
+}
 
-        ul {
-            padding-left: 25px;
-            list-style-type: square;
-        }
+/* Lists & Tables */
+ul {
+    padding-left: 25px;
+    list-style-type: square;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
 
-        th, td {
-            border: 1px solid #444;
-            padding: 10px;
-            text-align: left;
-        }
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
 
-        th {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
+th {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
     </style>
 </head>
 <body>
