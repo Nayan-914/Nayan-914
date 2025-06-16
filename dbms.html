@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Fundamentals</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 5px 10px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #3498db;
+        }
+        
+        /* Content Sections */
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Lists */
+        ul.features {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        
+        ul.features li {
+            margin-bottom: 8px;
+        }
+        
+        /* Code blocks */
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 3px;
+            border-left: 3px solid #3498db;
+            overflow-x: auto;
+        }
+        
+        /* Comparison tables */
+        .comparison {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .comparison th {
+            background-color: #2c3e50;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Database Fundamentals</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#terminology">Terminologies</a></li>
+            <li><a href="#dbms">DBMS</a></li>
+            <li><a href="#models">Database Models</a></li>
+            <li><a href="#constraints">Integrity Constraints</a></li>
+            <li><a href="#normalization">Normalization</a></li>
+            <li><a href="#distributed">Distributed DB</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#sql">SQL</a></li>
+        </ul>
+    </nav>
+    
+    <div class="section" id="intro">
+        <h2>Data and Information</h2>
+        <p><strong>Data</strong> refers to raw facts and figures, while <strong>Information</strong> is processed data that is meaningful and useful for decision making.</p>
+        
+        <h3>Features of Information</h3>
+        <ul class="features">
+            <li><strong>Accuracy:</strong> Information should be free from errors</li>
+            <li><strong>Timeliness:</strong> Information should be available when needed</li>
+            <li><strong>Relevance:</strong> Information should be pertinent to the decision at hand</li>
+            <li><strong>Completeness:</strong> Information should contain all necessary details</li>
+            <li><strong>Consistency:</strong> Information should be consistent across the organization</li>
+        </ul>
+        
+        <h3>Database and its Purpose</h3>
+        <p>A database is an organized collection of data stored and accessed electronically. Its main purposes include:</p>
+        <ul class="features">
+            <li>Data organization and storage</li>
+            <li>Efficient data retrieval</li>
+            <li>Data sharing among users and applications</li>
+            <li>Data integrity and security</li>
+            <li>Reduction of data redundancy</li>
+        </ul>
+    </div>
+    
+    <div class="section" id="terminology">
+        <h2>Terminologies in Database</h2>
+        
+        <table>
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Table</td>
+                <td>A collection of related data organized in rows and columns</td>
+            </tr>
+            <tr>
+                <td>Field</td>
+                <td>A single piece of information in a table (column)</td>
+            </tr>
+            <tr>
+                <td>Record</td>
+                <td>A complete set of fields about one item (row)</td>
+            </tr>
+            <tr>
+                <td>Tuple</td>
+                <td>Another term for a record in relational databases</td>
+            </tr>
+            <tr>
+                <td>Object</td>
+                <td>In object-oriented databases, an instance of a class</td>
+            </tr>
+            <tr>
+                <td>Keys</td>
+                <td>Fields used to identify and establish relationships between tables</td>
+            </tr>
+            <tr>
+                <td>Data Dictionary</td>
+                <td>A centralized repository of information about data such as meaning, relationships, origin, usage, and format</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section" id="dbms">
+        <h2>Database Management System (DBMS)</h2>
+        
+        <h3>Introduction</h3>
+        <p>A DBMS is software that interacts with end users, applications, and the database itself to capture and analyze data.</p>
+        
+        <h3>Objectives</h3>
+        <ul class="features">
+            <li>Data integration and sharing</li>
+            <li>Data independence (physical and logical)</li>
+            <li>Controlled redundancy</li>
+            <li>Consistency and integrity</li>
+            <li>Security and privacy</li>
+            <li>Backup and recovery</li>
+        </ul>
+        
+        <h3>Advantages</h3>
+        <ul class="features">
+            <li>Improved data sharing</li>
+            <li>Improved data security</li>
+            <li>Better data integration</li>
+            <li>Minimized data inconsistency</li>
+            <li>Improved data access</li>
+            <li>Improved decision making</li>
+        </ul>
+        
+        <h3>Disadvantages</h3>
+        <ul class="features">
+            <li>Increased costs (hardware, software, personnel)</li>
+            <li>Management complexity</li>
+            <li>Maintaining currency</li>
+            <li>Performance issues with large databases</li>
+            <li>Impact of failure (single point of failure)</li>
+        </ul>
+    </div>
+    
+    <div class="section" id="models">
+        <h2>Types of Database Models</h2>
+        
+        <h3>Hierarchical Model</h3>
+        <p>Organizes data in a tree-like structure with parent-child relationships. Each parent can have many children, but each child has only one parent.</p>
+        
+        <h3>Network Model</h3>
+        <p>An extension of hierarchical model allowing many-to-many relationships through a graph structure.</p>
+        
+        <h3>Relational Model</h3>
+        <p>Stores data in tables (relations) with rows and columns. Relationships are maintained through keys.</p>
+        
+        <h3>Entity-Relationship Model</h3>
+        <p>A conceptual model that describes data as entities, attributes, and relationships.</p>
+    </div>
+    
+    <div class="section" id="constraints">
+        <h2>Integrity Constraints and Types</h2>
+        
+        <h3>Domain Integrity</h3>
+        <p>Ensures that only valid values are permitted for an attribute (column).</p>
+        
+        <h3>Entity Integrity</h3>
+        <p>Requires that each entity (row) has a unique identifier (primary key) and no part of the primary key can be null.</p>
+        
+        <h3>Referential Integrity</h3>
+        <p>Ensures relationships between tables remain consistent through foreign keys.</p>
+        
+        <h3>Keys</h3>
+        <table>
+            <tr>
+                <th>Key Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Primary Key</td>
+                <td>Uniquely identifies each record in a table</td>
+            </tr>
+            <tr>
+                <td>Foreign Key</td>
+                <td>Links two tables by referencing the primary key of another table</td>
+            </tr>
+            <tr>
+                <td>Candidate Key</td>
+                <td>A column or set of columns that could qualify as a primary key</td>
+            </tr>
+            <tr>
+                <td>Super Key</td>
+                <td>A set of columns that uniquely identifies rows but may have extra columns</td>
+            </tr>
+            <tr>
+                <td>Composite Key</td>
+                <td>A primary key consisting of multiple columns</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section" id="normalization">
+        <h2>Normalization</h2>
+        
+        <h3>Introduction</h3>
+        <p>Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
+        
+        <h3>Normal Forms</h3>
+        
+        <h4>First Normal Form (1NF)</h4>
+        <ul>
+            <li>Each table cell should contain a single value</li>
+            <li>Each record needs to be unique</li>
+        </ul>
+        
+        <h4>Second Normal Form (2NF)</h4>
+        <ul>
+            <li>Must be in 1NF</li>
+            <li>All non-key attributes are fully dependent on the primary key</li>
+        </ul>
+        
+        <h4>Third Normal Form (3NF)</h4>
+        <ul>
+            <li>Must be in 2NF</li>
+            <li>Has no transitive functional dependencies</li>
+        </ul>
+        
+        <h3>Advantages</h3>
+        <ul class="features">
+            <li>Reduced data redundancy</li>
+            <li>Improved data integrity</li>
+            <li>Better database organization</li>
+            <li>Easier database maintenance</li>
+        </ul>
+        
+        <h3>Disadvantages</h3>
+        <ul class="features">
+            <li>Increased complexity</li>
+            <li>More tables to join in queries</li>
+            <li>Potential performance impact</li>
+        </ul>
+    </div>
+    
+    <div class="section" id="distributed">
+        <h2>Centralized and Distributed Database</h2>
+        
+        <h3>Introduction</h3>
+        <p><strong>Centralized Database:</strong> Data is stored at a single location</p>
+        <p><strong>Distributed Database:</strong> Data is stored across multiple locations connected via network</p>
+        
+        <h3>Advantages of Distributed Database</h3>
+        <ul class="features">
+            <li>Improved availability and reliability</li>
+            <li>Local control of data</li>
+            <li>Modular growth</li>
+            <li>Faster response for local queries</li>
+        </ul>
+        
+        <h3>Disadvantages of Distributed Database</h3>
+        <ul class="features">
+            <li>Complexity in design and maintenance</li>
+            <li>Higher costs</li>
+            <li>Security challenges</li>
+            <li>Consistency maintenance</li>
+        </ul>
+        
+        <h3>Comparison</h3>
+        <table class="comparison">
+            <tr>
+                <th>Factor</th>
+                <th>Centralized</th>
+                <th>Distributed</th>
+            </tr>
+            <tr>
+                <td>Data Location</td>
+                <td>Single location</td>
+                <td>Multiple locations</td>
+            </tr>
+            <tr>
+                <td>Cost</td>
+                <td>Lower initial cost</td>
+                <td>Higher initial cost</td>
+            </tr>
+            <tr>
+                <td>Maintenance</td>
+                <td>Easier</td>
+                <td>More complex</td>
+            </tr>
+            <tr>
+                <td>Fault Tolerance</td>
+                <td>Single point of failure</td>
+                <td>More resilient</td>
+            </tr>
+            <tr>
+                <td>Performance</td>
+                <td>Good for centralized access</td>
+                <td>Better for distributed access</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section" id="security">
+        <h2>Database Security</h2>
+        
+        <h3>Introduction</h3>
+        <p>Database security refers to the protection of database from unauthorized access, misuse, or destruction.</p>
+        
+        <h3>Challenges</h3>
+        <ul class="features">
+            <li>Unauthorized access</li>
+            <li>Data corruption</li>
+            <li>Data theft</li>
+            <li>SQL injection</li>
+            <li>Denial of service attacks</li>
+        </ul>
+        
+        <h3>Security Measures</h3>
+        <ul class="features">
+            <li>Authentication and authorization</li>
+            <li>Encryption</li>
+            <li>Auditing</li>
+            <li>Backup and recovery</li>
+            <li>Firewalls</li>
+            <li>Input validation</li>
+        </ul>
+        
+        <h3>Roles of Database Administrator (DBA)</h3>
+        <ul class="features">
+            <li>Database design and implementation</li>
+            <li>Security administration</li>
+            <li>Backup and recovery</li>
+            <li>Performance tuning</li>
+            <li>User management</li>
+            <li>Database maintenance</li>
+        </ul>
+    </div>
+    
+    <div class="section" id="sql">
+        <h2>Practical Topics: DDL and DML Languages</h2>
+        
+        <h3>DDL (Data Definition Language)</h3>
+        <p>Used to define and modify database structure:</p>
+        <div class="code">
+            CREATE TABLE, ALTER TABLE, DROP TABLE, TRUNCATE TABLE, 
+            CREATE INDEX, DROP INDEX, CREATE VIEW, DROP VIEW
+        </div>
+        
+        <h3>DML (Data Manipulation Language)</h3>
+        <p>Used to manage data within database objects:</p>
+        <div class="code">
+            SELECT, INSERT, UPDATE, DELETE, MERGE, CALL, EXPLAIN PLAN, LOCK TABLE
+        </div>
+        
+        <h2>SQL Data Types</h2>
+        
+        <table>
+            <tr>
+                <th>Data Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>CHAR</td>
+                <td>Fixed-length character string (0-255 characters)</td>
+            </tr>
+            <tr>
+                <td>VARCHAR</td>
+                <td>Variable-length character string (0-65535 characters)</td>
+            </tr>
+            <tr>
+                <td>BINARY</td>
+                <td>Fixed-length binary data</td>
+            </tr>
+            <tr>
+                <td>VARBINARY</td>
+                <td>Variable-length binary data</td>
+            </tr>
+            <tr>
+                <td>TINYBLOB</td>
+                <td>Binary large object, max 255 bytes</td>
+            </tr>
+            <tr>
+                <td>TINYTEXT</td>
+                <td>Text string, max 255 characters</td>
+            </tr>
+            <tr>
+                <td>TEXT</td>
+                <td>Text string, max 65535 characters</td>
+            </tr>
+            <tr>
+                <td>LONGTEXT</td>
+                <td>Text string, max 4GB</td>
+            </tr>
+            <tr>
+                <td>ENUM</td>
+                <td>String object with one value from predefined list</td>
+            </tr>
+            <tr>
+                <td>BIT</td>
+                <td>Bit-field type (1-64 bits)</td>
+            </tr>
+            <tr>
+                <td>TINYINT</td>
+                <td>Very small integer (-128 to 127 or 0 to 255)</td>
+            </tr>
+            <tr>
+                <td>BOOLEAN</td>
+                <td>Synonym for TINYINT(1), stores 0 or 1</td>
+            </tr>
+            <tr>
+                <td>INTEGER</td>
+                <td>Standard integer (-2147483648 to 2147483647)</td>
+            </tr>
+            <tr>
+                <td>FLOAT</td>
+                <td>Single-precision floating-point number</td>
+            </tr>
+            <tr>
+                <td>DOUBLE</td>
+                <td>Double-precision floating-point number</td>
+            </tr>
+            <tr>
+                <td>DECIMAL</td>
+                <td>Fixed-point number with exact precision</td>
+            </tr>
+            <tr>
+                <td>DATE</td>
+                <td>Date value in 'YYYY-MM-DD' format</td>
+            </tr>
+            <tr>
+                <td>DATETIME</td>
+                <td>Date and time value in 'YYYY-MM-DD HH:MM:SS' format</td>
+            </tr>
+        </table>
+    </div>
+    
+
+</body>
+</html>
