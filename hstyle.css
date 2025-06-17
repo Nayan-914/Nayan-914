@@ -1,0 +1,261 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('n.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Comic Neue', cursive, 'Orbitron', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.5;
+  user-select: none;
+}
+
+/* Fixed header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.95);
+  border-bottom: 4px solid #ff1e56;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(255, 30, 86, 0.3);
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 2px 2px #000, 0 0 10px #ff1e56;
+  letter-spacing: 2px;
+  user-select: text;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Comic Neue', cursive;
+  text-shadow: 1px 1px #000;
+  user-select: text;
+}
+
+nav a:hover,
+nav a:focus {
+  border-color: #ff1e56;
+  background-color: #2a2a2a;
+  box-shadow: 0 0 10px #ff1e56;
+  outline: none;
+}
+
+/* Menu button */
+.menu-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background: #ff1e56;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  z-index: 1100;
+  box-shadow: 0 0 8px #ff1e56, inset 0 0 5px #ff1e56;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.menu-button:hover,
+.menu-button:focus {
+  background-color: #e0144a;
+  outline: none;
+  box-shadow: 0 0 15px #ff1e56, inset 0 0 10px #ff1e56;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  padding: 3rem 2rem 2rem 2rem;
+  border-right: 4px solid #ff1e56;
+  box-shadow: 6px 0 0 #ff1e56, inset 0 0 15px #ff1e56;
+  transition: left 0.4s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h2 {
+  color: #ff1e56;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 1px 1px #000;
+  letter-spacing: 1.5px;
+  user-select: text;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-right: 4px solid transparent;
+  transition: all 0.3s ease;
+  font-family: 'Comic Neue', cursive;
+  text-shadow: 1px 1px #000;
+  border-radius: 0 12px 12px 0;
+  user-select: text;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: #ff1e56;
+  border-right-color: #ff1e56;
+  background-color: #2a2a2a;
+  outline: none;
+  box-shadow: inset -6px 0 10px #ff1e56;
+}
+
+/* Main content */
+main {
+  padding: 6rem 2rem 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  user-select: text;
+}
+
+/* Manga-style panel */
+.panel {
+  border: 4px solid #ff1e56;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  box-shadow: 6px 6px 0 #ff1e56, inset 0 0 10px #ff1e56;
+  padding: 1.5rem 2rem;
+  margin: 1rem auto;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Paragraphs */
+section p {
+  font-size: 1.3rem;
+  color: #eee;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-family: 'Comic Neue', cursive;
+  text-shadow: 1px 1px #000;
+  user-select: text;
+}
+
+/* Tables */
+.manga-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+  background-color: #1a1a1a;
+  border: 2px solid #ff1e56;
+}
+
+.manga-table th,
+.manga-table td {
+  padding: 0.8rem;
+  border: 1px solid #ff1e56;
+  text-align: left;
+}
+
+.manga-table th {
+  background-color: #ff1e56;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+.manga-table tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.manga-table td {
+  text-align: center;
+}
+
+.manga-table td:nth-child(2) {
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 1rem;
+  }
+
+  .sidebar {
+    width: 220px;
+    padding: 2rem 1.5rem 2rem 1.5rem;
+  }
+
+  .menu-button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  nav ul {
+    display: none;
+  }
+}

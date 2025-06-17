@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>     12 Practical Works - Manga Style</title>
+
+  <!-- Google Fonts: Orbitron + Comic Neue (for manga style) -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="hstyle.css">
+</head>
+
+<body>
+  <button class="menu-button" aria-label="Toggle menu" onclick="toggleMenu()">☰ Menu</button>
+
+  <div class="sidebar" id="sidebar" role="navigation" aria-label="Subjects Sidebar">
+    <h2><br></h2>
+        <h2>Units</h2>
+    <ul>
+      <li><a href="dbms.html" tabindex="0">DBMS Concept</a></li>
+      <li><a href="#" tabindex="0">Network & Communication</a></li>
+      <li><a href="#" tabindex="0">Web Tech - II</a></li>
+      <li><a href="#" tabindex="0">Programming II</a></li>
+      <li><a href="#" tabindex="0">OOP Concept</a></li>
+      <li><a href="#" tabindex="0">Software Process Model</a></li>
+      <li><a href="#" tabindex="0">Trends in ICT</a></li>
+    </ul>
+  </div>
+
+  <header>
+    <h1> </h1>
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="homepage.html" tabindex="0">Home</a></li>
+        <li><a href="#" tabindex="0">Projects</a></li>
+        <li><a href="#" tabindex="0">About</a></li>
+        <li><a href="#" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+   <section class="panel">
+<h1><br></h1>
+  <h1>Level Up Your CS Skills!</h1>
+  <p>Hey tech trailblazers! 🚀 This is your ultimate command center for Grade 12 CS practicals. Crack databases, conquer networks, and code like a pro with our bite-sized guides and real-world examples.</p>
+  
+  <p>Why you'll love it:</p>
+  
+  <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+    <li>💡 Crystal-clear explanations</li>
+    <li>👩‍💻 Hands-on practice ready to go</li>
+    <li>📈 Progress tracker built in</li>
+    <li>🎯 Exam-smart tips</li>
+  </ul>
+  
+  <p>Dive in using the menu → Master a unit → Become unstoppable! 🔥</p>
+</section>
+      
+
+    <section class="panel">
+      <h2>Content Distribution</h2>
+      <p>Below is the complete breakdown of content across all units, including marks distribution and estimated working hours:</p>
+      
+      <table class="manga-table">
+        <thead>
+          <tr>
+            <th>S.N.</th>
+            <th>Topic</th>
+            <th>Marks</th>
+            <th>Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Database management system</td>
+            <td>8</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Data communication and networking</td>
+            <td>9</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Web Tech – II</td>
+            <td>8</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>C Programming II</td>
+            <td>8</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Object oriented programming</td>
+            <td>6</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Software development life cycle</td>
+            <td>6</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Recent Trends in technology</td>
+            <td>5</td>
+            <td>9</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="2">Total</td>
+            <td>50</td>
+            <td>80</td>
+          </tr>
+        </tbody>
+      </table>
+      
+          </section>
+  </main>
+
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    // Optional: Close sidebar when clicking outside on small screens
+    document.addEventListener('click', (e) => {
+      const sidebar = document.getElementById('sidebar');
+      const menuBtn = document.querySelector('.menu-button');
+      if (
+        sidebar.classList.contains('active') &&
+        !sidebar.contains(e.target) &&
+        !menuBtn.contains(e.target)
+      ) {
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+
+</html>
