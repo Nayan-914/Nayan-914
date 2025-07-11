@@ -53,7 +53,7 @@
             <div id="dbms-intro" class="panel">
                 <h2>Database Management System</h2>
                 
-                <h3>What is DBMS?</h3>
+                <h3>1. What is Database and DBMS? List out the advantages and disadvantages of DBMS.</h3>
                 <p>A <strong>Database</strong> is an organized collection of structured data stored electronically in a computer system.</p>
                 <p>A <strong>DBMS (Database Management System)</strong> is software that interacts with users, applications, and the database itself to capture and analyze data.</p>
                 
@@ -79,7 +79,7 @@
 
             <!-- File System vs DBMS Panel -->
             <div class="panel">
-                <h3>File Processing System vs DBMS</h3>
+                <h3>2. Differentiate between file processing system and DBMS. Give at least four points.</h3>
                 <table>
                     <thead>
                         <tr>
@@ -110,48 +110,126 @@
 
             <!-- DBMS Models Panel -->
             <div id="dbms-models" class="panel">
-                <h3>DBMS Models</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>Advantages</th>
-                            <th>Disadvantages</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Hierarchical</strong></td>
-                            <td>Simple structure, fast access for hierarchical data</td>
-                            <td>Rigid structure, complex to modify</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Network</strong></td>
-                            <td>More flexible than hierarchical, handles many-to-many relationships</td>
-                            <td>Complex to design and implement</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Relational</strong></td>
-                            <td>Simple and flexible, supports SQL, data independence</td>
-                            <td>Performance issues with complex queries</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Object-Oriented</strong></td>
-                            <td>Handles complex data types, supports inheritance</td>
-                            <td>Not as mature as relational, steep learning curve</td>
-                        </tr>
-                        <tr>
-                            <td><strong>NoSQL</strong></td>
-                            <td>Handles unstructured data, scales horizontally</td>
-                            <td>Limited query capabilities, no standard query language</td>
-                        </tr>
-                    </tbody>
-                </table>
+  <h3>3. Explain the different models of DBMS with advantages and disadvantages.</h3>
+
+    <h4>1. Hierarchical Model</h4>
+    <p>This model organizes data in a tree-like structure, with parent-child relationships. Each child has only one parent.</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Easy to understand and navigate.</li>
+                <li>Fast access to data in a hierarchical structure.</li>
+                <li>Data integrity is maintained via parent-child relationships.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Complex to modify (insertion/deletion may require restructuring).</li>
+                <li>Cannot handle many-to-many relationships.</li>
+                <li>Data redundancy can be high.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>2. Network Model</h4>
+    <p>Similar to the hierarchical model, but allows many-to-many relationships. Uses pointers to connect records.</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Supports complex relationships.</li>
+                <li>Faster data access using pointers.</li>
+                <li>More flexible than hierarchical.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Complex to design and maintain.</li>
+                <li>Difficult for users to understand.</li>
+                <li>Changes in structure are hard to manage.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>3. Relational Model</h4>
+    <p>Data is organized in tables (relations). Uses primary keys and foreign keys to establish relationships.</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Easy to use and understand (table format).</li>
+                <li>Strong mathematical foundation.</li>
+                <li>High flexibility and scalability.</li>
+                <li>Supports SQL.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Performance may degrade with very large databases.</li>
+                <li>Complex queries can slow down the system.</li>
+                <li>Not ideal for unstructured data.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>4. Object-Oriented Model</h4>
+    <p>Combines the features of object-oriented programming with DBMS. Data is stored as objects, similar to programming languages like Java or C++.</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Ideal for complex data like images, videos, etc.</li>
+                <li>Supports inheritance, encapsulation, and polymorphism.</li>
+                <li>Better for applications with complex relationships.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>More difficult to learn and implement.</li>
+                <li>Less mature compared to relational model.</li>
+                <li>Not widely supported.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>5. Entity-Relationship (ER) Model</h4>
+    <p>It’s a high-level conceptual model used in the design phase. Data is represented using entities (objects) and relationships.</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Easy to design and visualize.</li>
+                <li>Helps create an accurate database structure.</li>
+                <li>Useful for communication between designers and users.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Not used for actual storage—only for design.</li>
+                <li>Needs to be converted to relational model for implementation.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>6. Document / NoSQL Model</h4>
+    <p>Used in NoSQL databases, especially for unstructured or semi-structured data. Data is stored as documents (e.g., JSON, XML).</p>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Highly flexible and scalable.</li>
+                <li>Ideal for big data and real-time web apps.</li>
+                <li>Schema-less — can store different types of data.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Lacks standardized query language like SQL.</li>
+                <li>Data integrity may not be guaranteed.</li>
+                <li>Complex relationships are harder to manage.</li>
+            </ul>
+        </li>
+    </ul>
             </div>
 
             <!-- Relational Database Panel -->
             <div id="relational-db" class="panel">
-                <h3>Relational Database</h3>
+                <h3>4. What is a relational database? How is it different from other database models?</h3>
                 <p>A relational database organizes data into tables (relations) with rows and columns, where relationships between tables are established using keys.</p>
                 
                 <h4>Differences from other models:</h4>
@@ -166,7 +244,7 @@
 
             <!-- Data Redundancy Panel -->
             <div id="data-redundancy" class="panel">
-                <h3>Data Redundancy</h3>
+                <h3>5. What is data redundancy? </h3>
                 <p><strong>Data redundancy</strong> occurs when the same piece of data is stored in multiple places.</p>
                 
                 <h4>How DBMS reduces redundancy:</h4>
@@ -180,7 +258,7 @@
 
             <!-- Database Types Panel -->
             <div id="database-types" class="panel">
-                <h3>Centralized vs Distributed Database Systems</h3>
+                <h3>6. Write differentiate between centralized and distributed database systems.</h3>
                 <table>
                     <thead>
                         <tr>
@@ -215,7 +293,7 @@
 
             <!-- DBA Panel -->
             <div id="dba" class="panel">
-                <h3>Database Administrator (DBA)</h3>
+                <h3>7. Who is Database Administrator (DBA)? What are the major responsibilities of DBA?</h3>
                 <p>A professional responsible for managing, maintaining, and securing databases.</p>
                 
                 <h4>Major responsibilities:</h4>
@@ -233,7 +311,8 @@
 
             <!-- Normalization Panel -->
             <div id="normalization" class="panel">
-                <h3>Normalization Process</h3>
+                <h3>8. Define normalization. Explain 1NF, 2NF and 3NF with suitable examples. Explain the
+normalization process with examples.</h3>
                 <p><strong>Normalization</strong> is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
                 
 <h4>1NF (First Normal Form):</h4>
@@ -331,43 +410,219 @@
         <tr><td>1</td><td>Straw Hats</td><td>Thousand Sunny</td></tr>
     </tbody>
 </table>
+<h3>9. Explain the terms: </h3>h3>
+               <h4> 1. Primary Key</h4>
+<p><strong>Definition:</strong><br>
+A primary key is a column (or combination of columns) in a table that uniquely identifies each record in that table.</p>
+<ul>
+    <li>It cannot be NULL.</li>
+    <li>It must be unique for every record.</li>
+</ul>
 
-                <h4>Primary Key:</h4>
-                <p>A column or set of columns that uniquely identifies each row in a table.</p>
-                <p>Example: In a Pirates table, PirateID could be the primary key.</p>
-                
-                <h4>Foreign Key:</h4>
-                <p>A column that creates a relationship between two tables by referencing the primary key of another table.</p>
-                <p>Example: In a CrewMembers table, PirateID would be a foreign key referencing the Pirates table.</p>
-                
-                <h4>Candidate Key:</h4>
-                <p>A column or set of columns that could serve as a primary key (all unique and not null).</p>
-                <p>Example: In a Pirates table, both PirateID and PirateName (if unique) could be candidate keys.</p>
+<p><strong>Example:</strong></p>
+<pre><code>CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Age INT
+);</code></pre>
+
+<p><strong>Students Table Structure:</strong></p>
+<table>
+    <tr>
+        <th>Column</th>
+        <th>Data Type</th>
+        <th>Key / Constraint</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>StudentID</td>
+        <td>INT</td>
+        <td>Primary Key</td>
+        <td>Uniquely identifies each student</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>VARCHAR(100)</td>
+        <td>–</td>
+        <td>Student’s full name</td>
+    </tr>
+    <tr>
+        <td>Age</td>
+        <td>INT</td>
+        <td>–</td>
+        <td>Student’s age</td>
+    </tr>
+</table>
+
+<h4>2. Foreign Key</h4>
+<p><strong>Definition:</strong><br>
+A foreign key is a column in one table that refers to the primary key in another table. It is used to establish a relationship between two tables.</p>
+
+<p><strong>Example:</strong></p>
+<pre><code>CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);</code></pre>
+
+<p><strong>Employees Table Structure:</strong></p>
+<table>
+    <tr>
+        <th>Column</th>
+        <th>Data Type</th>
+        <th>Key / Constraint</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>EmployeeID</td>
+        <td>INT</td>
+        <td>Primary Key</td>
+        <td>Unique employee identifier</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>VARCHAR(100)</td>
+        <td>–</td>
+        <td>Employee’s full name</td>
+    </tr>
+    <tr>
+        <td>DepartmentID</td>
+        <td>INT</td>
+        <td>Foreign Key</td>
+        <td>Links to Departments table</td>
+    </tr>
+</table>
+
+<h4> 3. Candidate Key</h4>
+<p><strong>Definition:</strong><br>
+A candidate key is any column (or combination of columns) that can uniquely identify a row in a table.</p>
+<ul>
+    <li>There can be multiple candidate keys in a table.</li>
+    <li>One of them is chosen as the primary key; others become alternate keys.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre><code>CREATE TABLE Users (
+    UserID INT,
+    Email VARCHAR(100),
+    Username VARCHAR(50),
+    PRIMARY KEY (UserID)
+);</code></pre>
+
+<p><strong>Users Table Structure:</strong></p>
+<table>
+    <tr>
+        <th>Column</th>
+        <th>Data Type</th>
+        <th>Key / Constraint</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>UserID</td>
+        <td>INT</td>
+        <td>Primary Key</td>
+        <td>Unique numeric identifier for each user</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>VARCHAR(100)</td>
+        <td>Unique (Candidate Key)</td>
+        <td>User’s email address</td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td>VARCHAR(50)</td>
+        <td>Unique (Candidate Key)</td>
+        <td>User’s chosen username</td>
+    </tr>
+</table>
             </div>
 
             <!-- SQL Components Panel -->
             <div id="sql-components" class="panel">
-                <h3>SQL Components</h3>
-                <p><strong>SQL (Structured Query Language)</strong> is a standard language for managing and manipulating relational databases.</p>
-                
-                <h4>Components of SQL:</h4>
-                <ol>
-                    <li><strong>DDL (Data Definition Language)</strong>: CREATE, ALTER, DROP</li>
-                    <li><strong>DML (Data Manipulation Language)</strong>: SELECT, INSERT, UPDATE, DELETE</li>
-                    <li><strong>DCL (Data Control Language)</strong>: GRANT, REVOKE</li>
-                    <li><strong>TCL (Transaction Control Language)</strong>: COMMIT, ROLLBACK</li>
-                </ol>
-                
-                <h4>Common SQL Functions:</h4>
-                <ul>
-                    <li><strong>Aggregate</strong>: COUNT(), SUM(), AVG(), MAX(), MIN()</li>
-                    <li><strong>String</strong>: CONCAT(), SUBSTRING(), UPPER(), LOWER()</li>
-                    <li><strong>Date</strong>: NOW(), DATE(), YEAR(), MONTH()</li>
-                    <li><strong>Mathematical</strong>: ROUND(), ABS(), RAND()</li>
-                </ul>
-                
+                <h3>10. What is SQL? Explain its components and common functions.</h3>
+    <p><strong>Structured Query Language (SQL)</strong> is the standard language for <em>managing, accessing, and manipulating</em> data in relational databases. With SQL you can:</p>
+<ul>
+    <li>Create databases and tables</li>
+    <li>Insert, update, and delete data</li>
+    <li>Retrieve data using queries</li>
+    <li>Control user access and permissions</li>
+</ul>
+
+<!-- SQL Components -->
+<h4>Components of SQL</h4>
+<table>
+    <tr>
+        <th>Component</th>
+        <th>Description</th>
+        <th>Key Commands</th>
+    </tr>
+    <tr>
+        <td><strong>DDL</strong><br>(Data Definition Language)</td>
+        <td>Defines and modifies the structure of database objects.</td>
+        <td><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>RENAME</code>, <code>TRUNCATE</code></td>
+    </tr>
+    <tr>
+        <td><strong>DML</strong><br>(Data Manipulation Language)</td>
+        <td>Handles data inside tables.</td>
+        <td><code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td>
+    </tr>
+    <tr>
+        <td><strong>DCL</strong><br>(Data Control Language)</td>
+        <td>Controls access to data and permissions.</td>
+        <td><code>GRANT</code>, <code>REVOKE</code></td>
+    </tr>
+    <tr>
+        <td><strong>TCL</strong><br>(Transaction Control Language)</td>
+        <td>Manages transactions, ensuring data integrity.</td>
+        <td><code>COMMIT</code>, <code>ROLLBACK</code>, <code>SAVEPOINT</code></td>
+    </tr>
+</table>
+
+<!-- Common SQL Functions -->
+<h4>Common SQL Functions</h4>
+<table>
+    <tr>
+        <th>Function Type</th>
+        <th>Purpose</th>
+        <th>Examples</th>
+    </tr>
+    <tr>
+        <td><strong>Aggregate Functions</strong></td>
+        <td>Perform calculations on data sets.</td>
+        <td><code>SUM()</code>, <code>AVG()</code>, <code>COUNT()</code>, <code>MIN()</code>, <code>MAX()</code></td>
+    </tr>
+    <tr>
+        <td><strong>String Functions</strong></td>
+        <td>Manipulate text values.</td>
+        <td><code>UPPER()</code>, <code>LOWER()</code>, <code>LENGTH()</code>, <code>CONCAT()</code></td>
+    </tr>
+    <tr>
+        <td><strong>Date/Time Functions</strong></td>
+        <td>Work with date and time data.</td>
+        <td><code>NOW()</code>, <code>CURDATE()</code>, <code>DATEDIFF()</code></td>
+    </tr>
+    <tr>
+        <td><strong>Conversion Functions</strong></td>
+        <td>Convert between data types.</td>
+        <td><code>CAST()</code>, <code>CONVERT()</code></td>
+    </tr>
+    <tr>
+        <td><strong>Mathematical Functions</strong></td>
+        <td>Perform numeric operations.</td>
+        <td><code>ROUND()</code>, <code>ABS()</code>, <code>CEIL()</code>, <code>FLOOR()</code></td>
+    </tr>
+</table>
+
+        
                 <h4>Example SQL Commands:</h4>
-                <pre><code>CREATE TABLE pirates (
+<pre><code>CREATE TABLE pirates (
     pirate_id INT PRIMARY KEY,
     name VARCHAR(50),
     bounty BIGINT,
@@ -378,12 +633,146 @@ INSERT INTO pirates VALUES
 (1, 'Monkey D. Luffy', 3000000000, 'Straw Hats'),
 (2, 'Roronoa Zoro', 1111000000, 'Straw Hats');
 
-SELECT * FROM pirates WHERE bounty > 1000000000;</code></pre>
-            </div>
-        </section>
+SELECT * FROM pirates WHERE bounty > 1000000000;
+</code></pre>
+<h5>Output</h5>
+<!-- Query Output -->
+<table style="border-collapse: collapse; width:100%; margin:15px 0;">
+    <thead>
+        <tr style="background:#ecf0f1;">
+            <th style="border:1px solid #aaa; padding:8px;">pirate_id</th>
+            <th style="border:1px solid #aaa; padding:8px;">name</th>
+            <th style="border:1px solid #aaa; padding:8px;">bounty</th>
+            <th style="border:1px solid #aaa; padding:8px;">crew</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #aaa; padding:8px;">1</td>
+            <td style="border:1px solid #aaa; padding:8px;">Monkey D. Luffy</td>
+            <td style="border:1px solid #aaa; padding:8px;">3000000000</td>
+            <td style="border:1px solid #aaa; padding:8px;">Straw Hats</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #aaa; padding:8px;">2</td>
+            <td style="border:1px solid #aaa; padding:8px;">Roronoa Zoro</td>
+            <td style="border:1px solid #aaa; padding:8px;">1111000000</td>
+            <td style="border:1px solid #aaa; padding:8px;">Straw Hats</td>
+        </tr>
+    </tbody>
+</table>
+     <div class="panel">
+         <h3>11. Write SQL commands to perform the following operations: -</h3>
+         <p><strong>a. Create a table named <code>students</code> with the fields: Id, Name, Class, and Marks.</strong></p>
+<pre><code>CREATE TABLE students (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Class VARCHAR(10),
+    Marks INT
+);</code></pre>
+      <h5>Output</h5>   
+<img src="your-image.jpg" alt="Description of image">
+<!-- b. Insert records -->
+<p><strong>b. Insert records into the <code>students</code> table with Naruto-themed first names.</strong></p>
+<pre><code>INSERT INTO students (Id, Name, Class, Marks) VALUES
+(1, 'Naruto',  'XII-A', 92),
+(2, 'Sasuke',  'XII-A', 88),
+(3, 'Shikamaru', 'XII-B', 79),
+(4, 'Sakura',  'XII-A', 78),
+(5, 'Hinata',  'XII-B', 85);</code></pre>
+<h5>Output</h5>
+         <img src="your-image.jpg" alt="Description of image">
+         
+<!-- c. Display all records -->
+<p><strong>c. Display all records from the <code>students</code> table.</strong></p>
+<pre><code>SELECT * FROM students;</code></pre>
+<h5>Output</h5>
+         <img src="your-image.jpg" alt="Description of image">
+<!-- d. Update marks -->
+<p><strong>d. Update the marks of the student whose name is 'Sakura' to 85.</strong></p>
+<pre><code>UPDATE students
+SET Marks = 85
+WHERE Name = 'Sakura';</code></pre>
+<h5>Output</h5>
+         <img src="your-image.jpg" alt="Description of image">
+<!-- e. Delete record -->
+<p><strong>e. Delete the record of the student with id = 3.</strong></p>
+<pre><code>DELETE FROM students
+WHERE Id = 3;</code></pre>
+         <h5>Output</h5>
+         <img src="your-image.jpg" alt="Description of image">
+         
+</div>
 
+     <div class="panel">
 
+          <h3>12. Define the following terms. </h3>
+     <h4>a. Data Dictionary</h4>
+<p>A <strong>data dictionary</strong> is a file or set of information that describes the structure, meaning, and relationships of data in a database. It acts like a reference guide, listing tables, columns, data types, and constraints.</p>
+
+<h4>b. Primary Key</h4>
+<p>A <strong>primary key</strong> is a unique identifier for each record in a database table. No two rows can have the same primary key, and it cannot be empty (NULL). Example: An "Employee ID" in an employee table.</p>
+
+<h4>c. Relationship</h4>
+<p>A <strong>relationship</strong> defines how tables in a database are connected. Common types are:</p>
+<ul>
+    <li><strong>One-to-One</strong> (e.g., one person has one passport)</li>
+    <li><strong>One-to-Many</strong> (e.g., one customer has many orders)</li>
+    <li><strong>Many-to-Many</strong> (e.g., students and courses, where one student takes many courses, and one course has many students)</li>
+</ul>
+
+<h4>d. Data Manipulation Language (DML)</h4>
+<p><strong>DML</strong> is a set of SQL commands used to insert, update, delete, and retrieve data from a database. Examples:</p>
+<ul>
+    <li><code>INSERT</code> (add new data)</li>
+    <li><code>UPDATE</code> (modify existing data)</li>
+    <li><code>DELETE</code> (remove data)</li>
+    <li><code>SELECT</code> (fetch data)</li>
+</ul>
+
+<h4>e. Structured Query Language (SQL)</h4>
+<p><strong>SQL</strong> is the standard language used to communicate with databases. It allows users to create, modify, and query data. SQL includes commands for:</p>
+<ul>
+    <li>Defining tables (DDL)</li>
+    <li>Manipulating data (DML)</li>
+    <li>Controlling access (DCL)</li>
+</ul>
+
+<h4>f. Data Integrity</h4>
+<p><strong>Data integrity</strong> ensures that data in a database is accurate, consistent, and reliable. It is maintained through rules like:</p>
+<ul>
+    <li><strong>Primary Keys</strong> (no duplicates)</li>
+    <li><strong>Foreign Keys</strong> (valid references between tables)</li>
+    <li><strong>Constraints</strong> (e.g., NOT NULL, UNIQUE)</li>
+</ul>
+
+<h4>g. Data Definition Language (DDL)</h4>
+<p><strong>DDL</strong> is a part of SQL used to define and modify database structures. Examples:</p>
+<ul>
+    <li><code>CREATE</code> (make a new table/database)</li>
+    <li><code>ALTER</code> (modify an existing table)</li>
+    <li><code>DROP</code> (delete a table/database)</li>
+</ul>
+
+<h4>h. Data Security</h4>
+<p><strong>Data security</strong> refers to protecting a database from unauthorized access, corruption, or theft. Methods include:</p>
+<ul>
+    <li><strong>User authentication</strong> (passwords, permissions)</li>
+    <li><strong>Encryption</strong> (securing sensitive data)</li>
+    <li><strong>Backups</strong> (preventing data loss)</li>
+</ul>
+
+<h4>i. Database System</h4>
+<p>A <strong>database system</strong> is software that manages and organizes data efficiently. It includes:</p>
+<ul>
+    <li><strong>Database</strong> (where data is stored)</li>
+    <li><strong>DBMS (Database Management System)</strong> (software like MySQL, Oracle)</li>
+    <li><strong>Users & Applications</strong> (interacting with the database)</li>
+</ul>
+
+</div>                
     </main>
+
 
 <script>
     function toggleMenu() {
