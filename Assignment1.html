@@ -384,23 +384,20 @@ SELECT * FROM pirates WHERE bounty > 1000000000;</code></pre>
 
     </main>
 
-    <script>
-        // Toggle sidebar
-        document.getElementById('menuButton').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+    }
 
-        // Close sidebar when clicking outside
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const menuButton = document.getElementById('menuButton');
-            
-            if (sidebar.classList.contains('active') && 
-                !sidebar.contains(event.target) && 
-                event.target !== menuButton) {
-                sidebar.classList.remove('active');
-            }
-        });
-    </script>
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.querySelector('.menu-button');
+        if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+</script>
 </body>
 </html>
