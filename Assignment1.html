@@ -7,9 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
    <style><style>
-    body {
-        background-image: url('dbms.avif');
-    }
+   body {
+    background-image: url('dbms.avif');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    height: 100vh; /* Ensure body takes full height */
+    margin: 0; /* Remove default margin */
+}
     .panel img {
         width: 100%;  /* Make images responsive */
         height: auto; /* Maintain aspect ratio */
