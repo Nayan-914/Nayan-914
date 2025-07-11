@@ -2,98 +2,95 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Unit 2 – C Programming: Functions </title>
-     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-
-<link rel="stylesheet" href="style.css">
-
+    <title>Unit 2 – C Programming: Functions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <button class="menu-button" aria-label="Toggle menu" onclick="toggleMenu()">☰ Menu</button>
+    <button class="menu-button" aria-label="Toggle menu" onclick="toggleMenu()">☰ Menu</button>
 
-  <div class="sidebar" id="sidebar" role="navigation" aria-label="Subjects Sidebar">
-    <h2><br></h2>
+    <div class="sidebar" id="sidebar" role="navigation" aria-label="Subjects Sidebar">
+        <h2><br></h2>
         <h2>Units</h2>
-    <ul>
-      <li><a href="dbms.html" tabindex="0">DBMS Concept</a></li>
-      <li><a href="#" tabindex="0">Network & Communication</a></li>
-      <li><a href="#" tabindex="0">Web Tech - II</a></li>
-      <li><a href="c.html" tabindex="0">Programming II</a></li>
-      <li><a href="#" tabindex="0">OOP Concept</a></li>
-      <li><a href="#" tabindex="0">Software Process Model</a></li>
-      <li><a href="#" tabindex="0">Trends in ICT</a></li>
-    </ul>
-  </div>
-
-  <header>
-    <h1> </h1>
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="12home.html" tabindex="0">Home</a></li>
-        <li><a href="Assignment1.html" tabindex="0">Past Year Questions</a></li>
-        <li><a href="#" tabindex="0"></a></li>
-        <li><a href="#" tabindex="0"></a></li>
-      </ul>
-    </nav>
-  </header>
-
-    <h1>Unit 2 – C Programming: Functions</h1>
-    <hr>
-
-    <h2>1. Working with a Function</h2>
-
-    <h3>a. Define Function</h3>
-    <div class="note">
-        <b>Q:</b> What is a function in C?<br>
-        <b>A:</b> A function is a self-contained block of code that performs a specific task. Functions enhance modularity and reusability in programs.
+        <ul>
+            <li><a href="dbms.html" tabindex="0">DBMS Concept</a></li>
+            <li><a href="#" tabindex="0">Network & Communication</a></li>
+            <li><a href="#" tabindex="0">Web Tech - II</a></li>
+            <li><a href="c.html" tabindex="0">Programming II</a></li>
+            <li><a href="#" tabindex="0">OOP Concept</a></li>
+            <li><a href="#" tabindex="0">Software Process Model</a></li>
+            <li><a href="#" tabindex="0">Trends in ICT</a></li>
+        </ul>
     </div>
 
-    <h3>b. Syntax of a Function</h3>
-    <pre>
+    <header>
+        <h1>Unit 2 – C Programming: Functions</h1>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="12home.html" tabindex="0">Home</a></li>
+                <li><a href="Assignment1.html" tabindex="0">Past Year Questions</a></li>
+                <li><a href="#" tabindex="0"></a></li>
+                <li><a href="#" tabindex="0"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="panel">
+            <h2>1. Working with a Function</h2>
+
+            <h3>a. Define Function</h3>
+            <div class="note">
+                <b>Q:</b> What is a function in C?<br>
+                <b>A:</b> A function is a self-contained block of code that performs a specific task. Functions enhance modularity and reusability in programs.
+            </div>
+
+            <h3>b. Syntax of a Function</h3>
+            <pre>
 return_type function_name(parameter_list) {
     // body of the function
 }
-    </pre>
+            </pre>
 
-    <h3>c. Types of Functions</h3>
-    <ul>
-        <li><b>Library functions:</b> Predefined functions such as <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>, etc.</li>
-        <li><b>User-defined functions:</b> Functions created by the programmer to perform specific tasks.</li>
-    </ul>
+            <h3>c. Types of Functions</h3>
+            <ul>
+                <li><b>Library functions:</b> Predefined functions such as <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>, etc.</li>
+                <li><b>User-defined functions:</b> Functions created by the programmer to perform specific tasks.</li>
+            </ul>
 
-    <h3>d. Components of a Function</h3>
-    <ol>
-        <li>
-            <b>Function Prototype:</b> Declares the function before <code>main()</code>.<br>
-            <pre>int add(int, int);</pre>
-        </li>
-        <li>
-            <b>Function Call:</b> Invokes the function.<br>
-            <pre>add(5, 7);</pre>
-        </li>
-        <li>
-            <b>Function Definition:</b> Actual body of the function.<br>
-            <pre>
+            <h3>d. Components of a Function</h3>
+            <ol>
+                <li>
+                    <b>Function Prototype:</b> Declares the function before <code>main()</code>.<br>
+                    <pre>int add(int, int);</pre>
+                </li>
+                <li>
+                    <b>Function Call:</b> Invokes the function.<br>
+                    <pre>add(5, 7);</pre>
+                </li>
+                <li>
+                    <b>Function Definition:</b> Actual body of the function.<br>
+                    <pre>
 int add(int a, int b) {
     return a + b;
 }
-            </pre>
-        </li>
-        <li>
-            <b>Return Type:</b> Specifies the type of value returned by the function (e.g., <code>int</code>, <code>void</code>, <code>float</code>).
-        </li>
-    </ol>
+                    </pre>
+                </li>
+                <li>
+                    <b>Return Type:</b> Specifies the type of value returned by the function (e.g., <code>int</code>, <code>void</code>, <code>float</code>).
+                </li>
+            </ol>
+        </div>
 
-    <hr>
+        <div class="panel">
+            <h2>2. Categories of Functions with Examples</h2>
 
-    <h2>2. Categories of Functions with Examples</h2>
-
-    <h3>i. Function with Return Type but No Arguments</h3>
-    <div class="note">
-        <b>Q:</b> What does it mean?<br>
-        <b>A:</b> The function returns a value but takes no parameters.
-    </div>
-    <pre>
+            <h3>i. Function with Return Type but No Arguments</h3>
+            <div class="note">
+                <b>Q:</b> What does it mean?<br>
+                <b>A:</b> The function returns a value but takes no parameters.
+            </div>
+            <pre>
 #include &lt;stdio.h&gt;
 
 int getAge(); // Function prototype
@@ -108,15 +105,15 @@ int main() {
 int getAge() {
     return 17;
 }
-    </pre>
-    <div class="output-placeholder">
-             <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of getAge function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
 
-    <h3>ii. Function with Return Type and with Arguments</h3>
-    <pre>
+            <h3>ii. Function with Return Type and with Arguments</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 int power(int base, int exponent);
@@ -133,15 +130,15 @@ int power(int base, int exponent) {
         result *= base;
     return result;
 }
-    </pre>
-    <div class="output-placeholder">
-              <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of power function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
 
-    <h3>iii. Function with No Return Type and No Arguments</h3>
-    <pre>
+            <h3>iii. Function with No Return Type and No Arguments</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 void greet();
@@ -155,15 +152,15 @@ int main() {
 void greet() {
     printf("Hello from Sakura!\n");
 }
-    </pre>
-    <div class="output-placeholder">
-                <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of greet function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
 
-    <h3>iv. Function with No Return Type but with Arguments</h3>
-    <pre>
+            <h3>iv. Function with No Return Type but with Arguments</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 void displayInfo(char name[], int age);
@@ -177,46 +174,46 @@ int main() {
 void displayInfo(char name[], int age) {
     printf("%s's age is %d\n", name, age);
 }
-    </pre>
-    <div class="output-placeholder">
-               <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of displayInfo function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
 
-    <hr>
+        <div class="panel">
+            <h2>3. Storage Classes in C</h2>
+            <table>
+                <tr>
+                    <th>Storage Class</th>
+                    <th>Description</th>
+                    <th>Keyword</th>
+                </tr>
+                <tr>
+                    <td>Automatic</td>
+                    <td>Default in local scope</td>
+                    <td><code>auto</code></td>
+                </tr>
+                <tr>
+                    <td>External</td>
+                    <td>Global scope variables</td>
+                    <td><code>extern</code></td>
+                </tr>
+                <tr>
+                    <td>Register</td>
+                    <td>Stores in CPU register</td>
+                    <td><code>register</code></td>
+                </tr>
+                <tr>
+                    <td>Static</td>
+                    <td>Retains value between calls</td>
+                    <td><code>static</code></td>
+                </tr>
+            </table>
 
-    <h2>3. Storage Classes in C</h2>
-    <table>
-        <tr>
-            <th>Storage Class</th>
-            <th>Description</th>
-            <th>Keyword</th>
-        </tr>
-        <tr>
-            <td>Automatic</td>
-            <td>Default in local scope</td>
-            <td><code>auto</code></td>
-        </tr>
-        <tr>
-            <td>External</td>
-            <td>Global scope variables</td>
-            <td><code>extern</code></td>
-        </tr>
-        <tr>
-            <td>Register</td>
-            <td>Stores in CPU register</td>
-            <td><code>register</code></td>
-        </tr>
-        <tr>
-            <td>Static</td>
-            <td>Retains value between calls</td>
-            <td><code>static</code></td>
-        </tr>
-    </table>
-
-    <h3>Example: Static Storage Class</h3>
-    <pre>
+            <h3>Example: Static Storage Class</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 void countCalls();
@@ -234,22 +231,22 @@ void countCalls() {
     count++;
     printf("Hinata called this %d time(s)\n", count);
 }
-    </pre>
-    <div class="output-placeholder">
-               <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of countCalls function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
 
-    <hr>
-
-    <h2>4. Recursive Function</h2>
-    <div class="note">
-        <b>Q:</b> What is recursion?<br>
-        <b>A:</b> Recursion is when a function calls itself to solve a smaller instance of the same problem.
-    </div>
-    <h3>Example: Factorial using Recursion (Neji’s Computation)</h3>
-    <pre>
+        <div class="panel">
+            <h2>4. Recursive Function</h2>
+            <div class="note">
+                <b>Q:</b> What is recursion?<br>
+                <b>A:</b> Recursion is when a function calls itself to solve a smaller instance of the same problem.
+            </div>
+            <h3>Example: Factorial using Recursion (Neji’s Computation)</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 int factorial(int n);
@@ -267,17 +264,17 @@ int factorial(int n) {
     else
         return n * factorial(n - 1);
 }
-    </pre>
-    <div class="output-placeholder">
-                <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of factorial function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
 
-    <hr>
-
-    <h2>5. Passing Array to Function</h2>
-    <pre>
+        <div class="panel">
+            <h2>5. Passing Array to Function</h2>
+            <pre>
 #include &lt;stdio.h&gt;
 
 void printScores(int scores[], int size);
@@ -294,19 +291,19 @@ void printScores(int scores[], int size) {
     for (int i = 0; i &lt; size; i++)
         printf("Score %d: %d\n", i + 1, scores[i]);
 }
-    </pre>
-    <div class="output-placeholder">
-                <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of printScores function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
 
-    <hr>
+        <div class="panel">
+            <h2>6. Additional Notes & Examples</h2>
 
-    <h2>6. Additional Notes & Examples</h2>
-
-    <h3>Function with Multiple Arguments and Return Value</h3>
-    <pre>
+            <h3>Function with Multiple Arguments and Return Value</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 int max(int a, int b, int c);
@@ -323,18 +320,18 @@ int max(int a, int b, int c) {
     if (c &gt; m) m = c;
     return m;
 }
-    </pre>
-    <div class="output-placeholder">
-               <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of max function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
 
-    <h3>Inline Function (Conceptual in C99+)</h3>
-    <div class="note">
-        C does not support true inline functions like C++, but you can use the <code>inline</code> keyword in C99 and above for optimization hints.
-    </div>
-    <pre>
+            <h3>Inline Function (Conceptual in C99+)</h3>
+            <div class="note">
+                C does not support true inline functions like C++, but you can use the <code>inline</code> keyword in C99 and above for optimization hints.
+            </div>
+            <pre>
 #include &lt;stdio.h&gt;
 
 inline int square(int x) { return x * x; }
@@ -344,15 +341,15 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
 }
-    </pre>
-    <div class="output-placeholder">
-        <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of square function"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
 
-    <h3>Function Pointer Example</h3>
-    <pre>
+            <h3>Function Pointer Example</h3>
+            <pre>
 #include &lt;stdio.h&gt;
 
 void shout(char name[]) {
@@ -366,28 +363,13 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
 }
-    </pre>
-    <div class="output-placeholder">
-        <b>Output Image </b>
-    <img src="your-image.jpg" alt="Description of Image"
-         style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-    </div>
-
-    <hr>
-
-    <h2>Summary</h2>
-    <ul>
-        <li>Functions improve modularity, readability, and reusability.</li>
-        <li>There are library and user-defined functions.</li>
-        <li>Function components: prototype, call, definition, return type.</li>
-        <li>Storage classes: auto, extern, register, static.</li>
-        <li>Recursion allows a function to call itself.</li>
-        <li>Arrays can be passed to functions for batch processing.</li>
-        <li>Advanced: inline functions, function pointers.</li>
-    </ul>
-
-    <p>
-
-    </p>
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="your-image.jpg" alt="Output of function pointer example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+    </main>
 </body>
 </html>
