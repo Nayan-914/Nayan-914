@@ -6,8 +6,19 @@
     <title>DBMS Documentation</title>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-   <style>body {
-  background-image: url('dbms.avif'); </style>
+   <style><style>
+    body {
+        background-image: url('dbms.avif');
+    }
+    .panel img {
+        width: 100%;  /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Remove bottom space */
+    }
+    .panel {
+        overflow: hidden; /* Prevent overflow */
+    }
+</style>
 </head>
     <body>
     <button class="menu-button" aria-label="Toggle menu" onclick="toggleMenu()">☰ Menu</button>
