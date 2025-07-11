@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga-Style DBMS Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menu Button -->
+    <button class="menu-button" id="menuButton">☰</button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#dbms-intro">DBMS Introduction</a></li>
+            <li><a href="#dbms-models">DBMS Models</a></li>
+            <li><a href="#relational-db">Relational DB</a></li>
+            <li><a href="#normalization">Normalization</a></li>
+            <li><a href="#sql-basics">SQL Basics</a></li>
+            <li><a href="#c-programming">C Programming</a></li>
+            <li><a href="#functions">Functions</a></li>
+            <li><a href="#recursion">Recursion</a></li>
+        </ul>
+    </aside>
+
+    <!-- Header -->
+    <header>
+        <h1>DBMS & C Programming</h1>
+        <nav>
+            <ul>
+                <li><a href="#dbms-section">DBMS</a></li>
+                <li><a href="#c-section">C Programming</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Database Management Systems & C Programming Guide</h2>
+        </section>
+
+        <!-- DBMS Section -->
+        <section id="dbms-section" class="panel">
+            <h2 id="dbms-intro">Database Management System</h2>
+            
+            <h3>What is DBMS?</h3>
+            <p>A Database Management System (DBMS) is software that interacts with users, applications, and the database itself to capture and analyze data.</p>
+            
+            <h3 id="dbms-models">DBMS Models</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hierarchical</td>
+                        <td>Simple structure, fast access</td>
+                        <td>Rigid structure, complex to modify</td>
+                    </tr>
+                    <tr>
+                        <td>Relational</td>
+                        <td>Simple and flexible, supports SQL</td>
+                        <td>Performance issues with complex queries</td>
+                    </tr>
+                    <tr>
+                        <td>NoSQL</td>
+                        <td>Handles unstructured data, scales well</td>
+                        <td>Limited query capabilities</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="relational-db">Relational Database</h3>
+            <p>A relational database organizes data into tables (relations) with rows and columns, where relationships between tables are established using keys.</p>
+            
+            <h3 id="normalization">Normalization Process</h3>
+            <p>Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
+            <ol>
+                <li><strong>1NF</strong>: Eliminate repeating groups</li>
+                <li><strong>2NF</strong>: Remove partial dependencies</li>
+                <li><strong>3NF</strong>: Remove transitive dependencies</li>
+            </ol>
+
+            <h3 id="sql-basics">SQL Basics</h3>
+            <p>SQL (Structured Query Language) is a standard language for managing and manipulating relational databases.</p>
+            <h4>Example SQL Commands:</h4>
+            <pre><code>CREATE TABLE pirates (
+    pirate_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    bounty BIGINT,
+    crew VARCHAR(50)
+);
+
+INSERT INTO pirates VALUES 
+(1, 'Monkey D. Luffy', 3000000000, 'Straw Hats'),
+(2, 'Roronoa Zoro', 1111000000, 'Straw Hats');
+
+SELECT * FROM pirates WHERE bounty > 1000000000;
+</code></pre>
+        </section>
+
+        <!-- C Programming Section -->
+        <section id="c-section" class="panel">
+            <h2>C Programming Concepts</h2>
+            
+            <h3 id="functions">Functions in C</h3>
+            <p>A function is a self-contained block of code that performs a specific task.</p>
+            
+            <h4>Function Example:</h4>
+            <pre><code>#include &lt;stdio.h&gt;
+
+// Function declaration
+int calculateBounty(int years);
+
+int main() {
+    int luffyBounty = calculateBounty(3);
+    printf("Luffy's current bounty: %d berries\n", luffyBounty);
+    return 0;
+}
+
+// Function definition
+int calculateBounty(int years) {
+    if(years == 0) {
+        return 30000000; // initial bounty
+    }
+    else {
+        return 2 * calculateBounty(years - 1);
+    }
+}</code></pre>
+
+            <h3 id="recursion">Recursive Functions</h3>
+            <p>A recursive function is one that calls itself directly or indirectly.</p>
+            
+            <h4>Recursion Example:</h4>
+            <pre><code>void devilFruitPowers(int level) {
+    if(level <= 0) {
+        printf("No power awakened.\n");
+        return;
+    }
+    printf("Awakening level %d power!\n", level);
+    devilFruitPowers(level - 1);
+}</code></pre>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="panel">
+            <h2>Code Examples</h2>
+            
+            <h3>Storage Classes in C</h3>
+            <pre><code>// Automatic storage class
+void devilFruit() {
+    auto int power = 1; // automatic variable
+}
+
+// Static storage class
+void countHakiUses() {
+    static int count = 0; // retains value between calls
+    count++;
+    printf("Haki used %d times\n", count);
+}</code></pre>
+
+            <h3>SQL Table Creation</h3>
+            <pre><code>CREATE TABLE devil_fruits (
+    fruit_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    type VARCHAR(30),
+    current_user VARCHAR(50),
+    FOREIGN KEY (current_user) REFERENCES pirates(name)
+);</code></pre>
+        </section>
+    </main>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('menuButton').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuButton = document.getElementById('menuButton');
+            
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(event.target) && 
+                event.target !== menuButton) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
