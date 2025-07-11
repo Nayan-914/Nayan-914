@@ -3,24 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manga-Style DBMS Documentation</title>
+    <title>DBMS Documentation</title>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-<style>
-html, body {
-  height: 100%; /* Ensures body stretches to full viewport height */
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-image: url('DBMS.jpg'); /* Use correct path */
-  background-size: cover;         /* Makes image scale to cover entire screen */
-  background-position: center;    /* Centers the image */
-  background-repeat: no-repeat;   /* No tiling */
-  background-attachment: fixed;   /* Keeps it fixed while scrolling */
-}
-</style>
+   
 </head>
 <body>
     <!-- Menu Button -->
@@ -33,10 +19,14 @@ body {
             <li><a href="#dbms-intro">DBMS Introduction</a></li>
             <li><a href="#dbms-models">DBMS Models</a></li>
             <li><a href="#relational-db">Relational DB</a></li>
+            <li><a href="#data-redundancy">Data Redundancy</a></li>
+            <li><a href="#database-types">Database Types</a></li>
+            <li><a href="#dba">Database Administrator</a></li>
             <li><a href="#normalization">Normalization</a></li>
-            <li><a href="#sql-basics">SQL Basics</a></li>
-            <li><a href="#c-programming">C Programming</a></li>
-            <li><a href="#functions">Functions</a></li>
+            <li><a href="#sql-keys">SQL Keys</a></li>
+            <li><a href="#sql-components">SQL Components</a></li>
+            <li><a href="#functions">C Functions</a></li>
+            <li><a href="#storage-classes">Storage Classes</a></li>
             <li><a href="#recursion">Recursion</a></li>
         </ul>
     </aside>
@@ -62,55 +52,285 @@ body {
         </section>
 
         <!-- DBMS Section -->
-        <section id="dbms-section" class="panel">
-            <h2 id="dbms-intro">Database Management System</h2>
-            
-            <h3>What is DBMS?</h3>
-            <p>A Database Management System (DBMS) is software that interacts with users, applications, and the database itself to capture and analyze data.</p>
-            
-            <h3 id="dbms-models">DBMS Models</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Model</th>
-                        <th>Advantages</th>
-                        <th>Disadvantages</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Hierarchical</td>
-                        <td>Simple structure, fast access</td>
-                        <td>Rigid structure, complex to modify</td>
-                    </tr>
-                    <tr>
-                        <td>Relational</td>
-                        <td>Simple and flexible, supports SQL</td>
-                        <td>Performance issues with complex queries</td>
-                    </tr>
-                    <tr>
-                        <td>NoSQL</td>
-                        <td>Handles unstructured data, scales well</td>
-                        <td>Limited query capabilities</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section id="dbms-section">
+            <!-- DBMS Introduction Panel -->
+            <div id="dbms-intro" class="panel">
+                <h2>Database Management System</h2>
+                
+                <h3>What is DBMS?</h3>
+                <p>A <strong>Database</strong> is an organized collection of structured data stored electronically in a computer system.</p>
+                <p>A <strong>DBMS (Database Management System)</strong> is software that interacts with users, applications, and the database itself to capture and analyze data.</p>
+                
+                <h4>Advantages of DBMS:</h4>
+                <ul>
+                    <li>Data sharing among multiple users</li>
+                    <li>Reduced data redundancy</li>
+                    <li>Data integrity and security</li>
+                    <li>Concurrent access control</li>
+                    <li>Backup and recovery features</li>
+                    <li>Data independence</li>
+                </ul>
+                
+                <h4>Disadvantages of DBMS:</h4>
+                <ul>
+                    <li>High initial setup cost</li>
+                    <li>Complexity in design and implementation</li>
+                    <li>Performance overhead</li>
+                    <li>Need for specialized personnel (DBA)</li>
+                    <li>Vulnerability to failures</li>
+                </ul>
+            </div>
 
-            <h3 id="relational-db">Relational Database</h3>
-            <p>A relational database organizes data into tables (relations) with rows and columns, where relationships between tables are established using keys.</p>
-            
-            <h3 id="normalization">Normalization Process</h3>
-            <p>Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
-            <ol>
-                <li><strong>1NF</strong>: Eliminate repeating groups</li>
-                <li><strong>2NF</strong>: Remove partial dependencies</li>
-                <li><strong>3NF</strong>: Remove transitive dependencies</li>
-            </ol>
+            <!-- File System vs DBMS Panel -->
+            <div class="panel">
+                <h3>File Processing System vs DBMS</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File Processing System</th>
+                            <th>DBMS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data is stored in separate files</td>
+                            <td>Data is stored in a structured format</td>
+                        </tr>
+                        <tr>
+                            <td>High data redundancy</td>
+                            <td>Minimal data redundancy</td>
+                        </tr>
+                        <tr>
+                            <td>No data integrity constraints</td>
+                            <td>Supports data integrity constraints</td>
+                        </tr>
+                        <tr>
+                            <td>Difficult to implement security</td>
+                            <td>Advanced security features</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h3 id="sql-basics">SQL Basics</h3>
-            <p>SQL (Structured Query Language) is a standard language for managing and manipulating relational databases.</p>
-            <h4>Example SQL Commands:</h4>
-            <pre><code>CREATE TABLE pirates (
+            <!-- DBMS Models Panel -->
+            <div id="dbms-models" class="panel">
+                <h3>DBMS Models</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hierarchical</strong></td>
+                            <td>Simple structure, fast access for hierarchical data</td>
+                            <td>Rigid structure, complex to modify</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Network</strong></td>
+                            <td>More flexible than hierarchical, handles many-to-many relationships</td>
+                            <td>Complex to design and implement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relational</strong></td>
+                            <td>Simple and flexible, supports SQL, data independence</td>
+                            <td>Performance issues with complex queries</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object-Oriented</strong></td>
+                            <td>Handles complex data types, supports inheritance</td>
+                            <td>Not as mature as relational, steep learning curve</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NoSQL</strong></td>
+                            <td>Handles unstructured data, scales horizontally</td>
+                            <td>Limited query capabilities, no standard query language</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Relational Database Panel -->
+            <div id="relational-db" class="panel">
+                <h3>Relational Database</h3>
+                <p>A relational database organizes data into tables (relations) with rows and columns, where relationships between tables are established using keys.</p>
+                
+                <h4>Differences from other models:</h4>
+                <ul>
+                    <li>Uses tables instead of trees (hierarchical) or graphs (network)</li>
+                    <li>Data is stored in a structured format with strict schema</li>
+                    <li>Relationships are logical rather than physical pointers</li>
+                    <li>Uses SQL for querying</li>
+                    <li>Supports ACID properties (Atomicity, Consistency, Isolation, Durability)</li>
+                </ul>
+            </div>
+
+            <!-- Data Redundancy Panel -->
+            <div id="data-redundancy" class="panel">
+                <h3>Data Redundancy</h3>
+                <p><strong>Data redundancy</strong> occurs when the same piece of data is stored in multiple places.</p>
+                
+                <h4>How DBMS reduces redundancy:</h4>
+                <ul>
+                    <li>Normalization process eliminates duplicate data</li>
+                    <li>Foreign keys create relationships instead of duplicating data</li>
+                    <li>Centralized storage ensures single source of truth</li>
+                    <li>Views can present data from multiple tables without storing it redundantly</li>
+                </ul>
+            </div>
+
+            <!-- Database Types Panel -->
+            <div id="database-types" class="panel">
+                <h3>Centralized vs Distributed Database Systems</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Centralized Database</th>
+                            <th>Distributed Database</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data stored at single location</td>
+                            <td>Data stored across multiple locations</td>
+                        </tr>
+                        <tr>
+                            <td>Single point of failure</td>
+                            <td>No single point of failure</td>
+                        </tr>
+                        <tr>
+                            <td>Easier to manage</td>
+                            <td>Complex to manage</td>
+                        </tr>
+                        <tr>
+                            <td>Lower hardware costs</td>
+                            <td>Higher hardware costs</td>
+                        </tr>
+                        <tr>
+                            <td>Limited scalability</td>
+                            <td>Highly scalable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- DBA Panel -->
+            <div id="dba" class="panel">
+                <h3>Database Administrator (DBA)</h3>
+                <p>A professional responsible for managing, maintaining, and securing databases.</p>
+                
+                <h4>Major responsibilities:</h4>
+                <ul>
+                    <li>Database design and implementation</li>
+                    <li>Performance monitoring and tuning</li>
+                    <li>Backup and recovery planning</li>
+                    <li>User access management and security</li>
+                    <li>Data integrity enforcement</li>
+                    <li>Capacity planning</li>
+                    <li>Troubleshooting database issues</li>
+                    <li>Implementing new database technologies</li>
+                </ul>
+            </div>
+
+            <!-- Normalization Panel -->
+            <div id="normalization" class="panel">
+                <h3>Normalization Process</h3>
+                <p><strong>Normalization</strong> is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
+                
+                <h4>1NF (First Normal Form):</h4>
+                <ul>
+                    <li>Each table cell should contain a single value</li>
+                    <li>Each record needs to be unique</li>
+                </ul>
+                <pre><code>Students table (before 1NF):
+ID | Name       | Subjects
+1  | Monkey D. Luffy | Math, Science
+
+After 1NF:
+ID | Name       | Subject
+1  | Monkey D. Luffy | Math
+1  | Monkey D. Luffy | Science</code></pre>
+
+                <h4>2NF (Second Normal Form):</h4>
+                <ul>
+                    <li>Must be in 1NF</li>
+                    <li>All non-key attributes must depend on the entire primary key</li>
+                </ul>
+                <pre><code>StudentSubjects table (before 2NF):
+StudentID | Subject | Teacher | TeacherDepartment
+1         | Math    | Kizaru  | Science
+
+After 2NF:
+StudentSubjects:
+StudentID | Subject
+1         | Math
+
+Teachers:
+Teacher | TeacherDepartment
+Kizaru  | Science</code></pre>
+
+                <h4>3NF (Third Normal Form):</h4>
+                <ul>
+                    <li>Must be in 2NF</li>
+                    <li>No transitive dependencies</li>
+                </ul>
+                <pre><code>Students table (before 3NF):
+ID | Name       | Crew | CrewShip
+1  | Monkey D. Luffy | Straw Hats | Thousand Sunny
+
+After 3NF:
+Students:
+ID | Name       | CrewID
+1  | Monkey D. Luffy | 1
+
+Crews:
+CrewID | CrewName  | Ship
+1      | Straw Hats | Thousand Sunny</code></pre>
+            </div>
+
+            <!-- SQL Keys Panel -->
+            <div id="sql-keys" class="panel">
+                <h3>SQL Keys</h3>
+                
+                <h4>Primary Key:</h4>
+                <p>A column or set of columns that uniquely identifies each row in a table.</p>
+                <p>Example: In a Pirates table, PirateID could be the primary key.</p>
+                
+                <h4>Foreign Key:</h4>
+                <p>A column that creates a relationship between two tables by referencing the primary key of another table.</p>
+                <p>Example: In a CrewMembers table, PirateID would be a foreign key referencing the Pirates table.</p>
+                
+                <h4>Candidate Key:</h4>
+                <p>A column or set of columns that could serve as a primary key (all unique and not null).</p>
+                <p>Example: In a Pirates table, both PirateID and PirateName (if unique) could be candidate keys.</p>
+            </div>
+
+            <!-- SQL Components Panel -->
+            <div id="sql-components" class="panel">
+                <h3>SQL Components</h3>
+                <p><strong>SQL (Structured Query Language)</strong> is a standard language for managing and manipulating relational databases.</p>
+                
+                <h4>Components of SQL:</h4>
+                <ol>
+                    <li><strong>DDL (Data Definition Language)</strong>: CREATE, ALTER, DROP</li>
+                    <li><strong>DML (Data Manipulation Language)</strong>: SELECT, INSERT, UPDATE, DELETE</li>
+                    <li><strong>DCL (Data Control Language)</strong>: GRANT, REVOKE</li>
+                    <li><strong>TCL (Transaction Control Language)</strong>: COMMIT, ROLLBACK</li>
+                </ol>
+                
+                <h4>Common SQL Functions:</h4>
+                <ul>
+                    <li><strong>Aggregate</strong>: COUNT(), SUM(), AVG(), MAX(), MIN()</li>
+                    <li><strong>String</strong>: CONCAT(), SUBSTRING(), UPPER(), LOWER()</li>
+                    <li><strong>Date</strong>: NOW(), DATE(), YEAR(), MONTH()</li>
+                    <li><strong>Mathematical</strong>: ROUND(), ABS(), RAND()</li>
+                </ul>
+                
+                <h4>Example SQL Commands:</h4>
+                <pre><code>CREATE TABLE pirates (
     pirate_id INT PRIMARY KEY,
     name VARCHAR(50),
     bounty BIGINT,
@@ -121,70 +341,134 @@ INSERT INTO pirates VALUES
 (1, 'Monkey D. Luffy', 3000000000, 'Straw Hats'),
 (2, 'Roronoa Zoro', 1111000000, 'Straw Hats');
 
-SELECT * FROM pirates WHERE bounty > 1000000000;
-</code></pre>
+SELECT * FROM pirates WHERE bounty > 1000000000;</code></pre>
+            </div>
         </section>
 
         <!-- C Programming Section -->
-        <section id="c-section" class="panel">
-            <h2>C Programming Concepts</h2>
-            
-            <h3 id="functions">Functions in C</h3>
-            <p>A function is a self-contained block of code that performs a specific task.</p>
-            
-            <h4>Function Example:</h4>
-            <pre><code>#include &lt;stdio.h&gt;
-
-// Function declaration
-int calculateBounty(int years);
-
-int main() {
-    int luffyBounty = calculateBounty(3);
-    printf("Luffy's current bounty: %d berries\n", luffyBounty);
-    return 0;
+        <section id="c-section">
+            <!-- Functions Panel -->
+            <div id="functions" class="panel">
+                <h2>C Programming Concepts</h2>
+                
+                <h3>Functions in C</h3>
+                <p>A <strong>function</strong> is a self-contained block of code that performs a specific task.</p>
+                
+                <h4>Function Syntax:</h4>
+                <pre><code>return_type function_name(parameters) {
+    // function body
+    return value; // if return_type is not void
+}</code></pre>
+                
+                <h4>Types of functions:</h4>
+                <ul>
+                    <li>Library functions (e.g., printf(), scanf())</li>
+                    <li>User-defined functions (created by programmers)</li>
+                </ul>
+                
+                <h4>Components of function:</h4>
+                <ol>
+                    <li><strong>Function prototype</strong>: Declaration of function (e.g., `int add(int a, int b);`)</li>
+                    <li><strong>Function call</strong>: Using the function in code (e.g., `sum = add(5, 3);`)</li>
+                    <li><strong>Function definition</strong>: Implementation of function</li>
+                    <li><strong>Return type</strong>: Data type of value returned (void if no return)</li>
+                </ol>
+                
+                <h4>Function Categories with Examples:</h4>
+                <pre><code>// 1. Function with return type but no arguments
+int getBounty() {
+    return 1500000000; // Luffy's bounty
 }
 
-// Function definition
-int calculateBounty(int years) {
+// 2. Function with return type with arguments
+int addBounty(int current, int increase) {
+    return current + increase;
+}
+
+// 3. Function with no return type with no arguments
+void shoutLuffy() {
+    printf("I'm Monkey D. Luffy! The man who will be Pirate King!\n");
+}
+
+// 4. Function with no return type with arguments
+void displayCrew(char name[], char role[]) {
+    printf("%s is the %s of the Straw Hat crew.\n", name, role);
+}</code></pre>
+            </div>
+
+            <!-- Storage Classes Panel -->
+            <div id="storage-classes" class="panel">
+                <h3>Storage Classes in C</h3>
+                
+                <h4>Automatic (auto):</h4>
+                <p>Default for local variables, exists only within its block</p>
+                <pre><code>void devilFruit() {
+    auto int power = 1; // automatic variable
+}</code></pre>
+                
+                <h4>External (extern):</h4>
+                <p>Variables declared outside functions, visible to all files</p>
+                <pre><code>extern int crewMembers; // declared in another file</code></pre>
+                
+                <h4>Register:</h4>
+                <p>Suggests compiler to store in register for faster access</p>
+                <pre><code>register int speed = 3; // like Sanji's speed</code></pre>
+                
+                <h4>Static:</h4>
+                <p>Preserves value between function calls, initialized only once</p>
+                <pre><code>void countHakiUses() {
+    static int count = 0; // retains value between calls
+    count++;
+    printf("Haki used %d times\n", count);
+}</code></pre>
+            </div>
+
+            <!-- Recursion Panel -->
+            <div id="recursion" class="panel">
+                <h3>Recursive Functions</h3>
+                <p>A <strong>recursive function</strong> is one that calls itself directly or indirectly.</p>
+                
+                <h4>Syntax:</h4>
+                <pre><code>return_type function(parameters) {
+    if(base_condition) {
+        return base_value;
+    }
+    else {
+        // modify parameters
+        return function(modified_parameters);
+    }
+}</code></pre>
+                
+                <h4>Example 1: Calculating bounty increase recursively</h4>
+                <pre><code>int calculateBounty(int years) {
     if(years == 0) {
         return 30000000; // initial bounty
     }
     else {
         return 2 * calculateBounty(years - 1);
     }
-}</code></pre>
+}
 
-            <h3 id="recursion">Recursive Functions</h3>
-            <p>A recursive function is one that calls itself directly or indirectly.</p>
-            
-            <h4>Recursion Example:</h4>
-            <pre><code>void devilFruitPowers(int level) {
+// Usage: int luffyBounty = calculateBounty(3); // returns 240000000</code></pre>
+                
+                <h4>Example 2: Finding Devil Fruit powers</h4>
+                <pre><code>void devilFruitPowers(int level) {
     if(level <= 0) {
         printf("No power awakened.\n");
         return;
     }
     printf("Awakening level %d power!\n", level);
     devilFruitPowers(level - 1);
-}</code></pre>
+}
+
+// Usage: devilFruitPowers(5);</code></pre>
+            </div>
         </section>
 
         <!-- Examples Section -->
         <section id="examples" class="panel">
-            <h2>Code Examples</h2>
+            <h2>More Code Examples</h2>
             
-            <h3>Storage Classes in C</h3>
-            <pre><code>// Automatic storage class
-void devilFruit() {
-    auto int power = 1; // automatic variable
-}
-
-// Static storage class
-void countHakiUses() {
-    static int count = 0; // retains value between calls
-    count++;
-    printf("Haki used %d times\n", count);
-}</code></pre>
-
             <h3>SQL Table Creation</h3>
             <pre><code>CREATE TABLE devil_fruits (
     fruit_id INT PRIMARY KEY,
@@ -193,6 +477,61 @@ void countHakiUses() {
     current_user VARCHAR(50),
     FOREIGN KEY (current_user) REFERENCES pirates(name)
 );</code></pre>
+
+            <h3>SQL Commands</h3>
+            <pre><code>-- Create students table
+CREATE TABLE students (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Class VARCHAR(20),
+    Marks INT
+);
+
+-- Insert records
+INSERT INTO students VALUES 
+(1, 'Monkey D. Luffy', 'Pirate King', 99),
+(2, 'Roronoa Zoro', 'Swordsman', 95),
+(3, 'Nami', 'Navigator', 90);
+
+-- Update marks
+UPDATE students SET Marks = 85 WHERE Name = 'Anita';
+
+-- Delete record
+DELETE FROM students WHERE Id = 3;</code></pre>
+        </section>
+
+        <!-- Definitions Section -->
+        <section class="panel">
+            <h2>Key Definitions</h2>
+            
+            <dl>
+                <dt><strong>Data Dictionary</strong></dt>
+                <dd>A repository of metadata about database objects</dd>
+                
+                <dt><strong>Primary Key</strong></dt>
+                <dd>A unique identifier for each record in a table</dd>
+                
+                <dt><strong>Relationship</strong></dt>
+                <dd>Connection between tables established through keys</dd>
+                
+                <dt><strong>Data Manipulation Language (DML)</strong></dt>
+                <dd>SQL commands for data operations (SELECT, INSERT, etc.)</dd>
+                
+                <dt><strong>Structured Query Language (SQL)</strong></dt>
+                <dd>Standard language for relational databases</dd>
+                
+                <dt><strong>Data Integrity</strong></dt>
+                <dd>Accuracy and consistency of data in a database</dd>
+                
+                <dt><strong>Data Definition Language (DDL)</strong></dt>
+                <dd>SQL commands for defining database structure (CREATE, ALTER, etc.)</dd>
+                
+                <dt><strong>Data Security</strong></dt>
+                <dd>Protection of data from unauthorized access</dd>
+                
+                <dt><strong>Database System</strong></dt>
+                <dd>Software system for managing databases</dd>
+            </dl>
         </section>
     </main>
 
