@@ -185,61 +185,119 @@ void displayInfo(char name[], int age) {
     </div>
 
     <div class="panel">
-        <h2>3. Storage Classes in C</h2>
-        <table>
-            <tr>
-                <th>Storage Class</th>
-                <th>Description</th>
-                <th>Keyword</th>
-            </tr>
-            <tr>
-                <td>Automatic</td>
-                <td>Default in local scope, created when the block is entered.</td>
-                <td><code>auto</code></td>
-            </tr>
-            <tr>
-                <td>External</td>
-                <td>Global scope variables, accessible throughout the program.</td>
-                <td><code>extern</code></td>
-            </tr>
-            <tr>
-                <td>Register</td>
-                <td>Stores in CPU register for faster access.</td>
-                <td><code>register</code></td>
-            </tr>
-            <tr>
-                <td>Static</td>
-                <td>Retains value between function calls, initialized only once.</td>
-                <td><code>static</code></td>
-            </tr>
-        </table>
+              <section id="storage" class="panel">
+            <h2>3. Storage Classes</h2>
+            <p>Storage classes determine the scope, visibility, and lifetime of variables and functions.</p>
+            
+            <article id="auto-storage">
+                <h3>i. Automatic (auto)</h3>
+                <ul>
+                    <li>Default storage class for local variables</li>
+                    <li>Variables are created when block is entered and destroyed when block is exited</li>
+                    <li>Must be initialized each time block is entered</li>
+                </ul>
+                
+                <pre><code>#include <stdio.h>
 
-        <h3>Example: Static Storage Class</h3>
-        <pre>
-#include &lt;stdio.h&gt;
-
-void countCalls(); // Function prototype
+void demoAuto() {
+    int x = 10; // same as just "int x = 10;"
+    printf("Auto x: %d\n", x);
+    x++;
+}
 
 int main() {
-    countCalls(); // First call
-    countCalls(); // Second call
-    countCalls(); // Third call
+    demoAuto(); // x=10
+    demoAuto(); // x=10 again (not 11)
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
+}</code></pre>
+                
+                <p><strong>Features</strong>: Local scope, block lifetime, reinitialized each call</p>
+                <p><strong>Drawback</strong>: Doesn't retain value between function calls</p>
+            </article>
+            
+            <article id="extern-storage">
+                <h3>ii. External (extern)</h3>
+                <ul>
+                    <li>Used to declare global variables visible to all files</li>
+                    <li>Variables are defined outside any function</li>
+                    <li>Retain value throughout program execution</li>
+                </ul>
+                
+                <pre><code>#include <stdio.h>
+
+int count; // External variable (global)
+
+void increment() {
+    count++;
 }
 
-void countCalls() {
-    static int count = 0; // Static variable, retains value
-    count++; // Increment count
-    printf("Hinata called this %d time(s)\n", count); // Print number of calls
+int main() {
+    printf("Initial count: %d\n", count); // 0 (default)
+    increment();
+    increment();
+    printf("Final count: %d\n", count); // 2
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}</code></pre>
+                
+                <p><strong>Features</strong>: Global scope, program lifetime, initialized to zero by default</p>
+                <p><strong>Drawback</strong>: Can lead to naming conflicts in large programs</p>
+            </article>
+            
+            <article id="register-storage">
+                <h3>iii. Register</h3>
+                <ul>
+                    <li>Requests compiler to store variable in CPU register instead of RAM</li>
+                    <li>Faster access but limited number of registers available</li>
+                    <li>Can't use address operator (&) with register variables</li>
+                </ul>
+                
+                <pre><code>#include <stdio.h>
+
+int main() {
+    register int counter;
+    
+    for(counter = 0; counter < 10000; counter++) {
+        // Fast access for frequently used variable
+    }
+    printf("Loop completed %d times\n", counter);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}</code></pre>
+                
+                <p><strong>Features</strong>: Fast access, local scope</p>
+                <p><strong>Drawback</strong>: Limited availability, no address can be taken</p>
+            </article>
+            
+            <article id="static-storage">
+                <h3>iv. Static</h3>
+                <ul>
+                    <li>Preserves variable value between function calls</li>
+                    <li>Initialized only once (default zero)</li>
+                    <li>Local static variables are visible only in their function</li>
+                </ul>
+                
+                <pre><code>#include <stdio.h>
+
+void demoStatic() {
+    static int count = 0; // Initialized only once
+    count++;
+    printf("Static count: %d\n", count);
 }
-        </pre>
-        <div class="output-placeholder">
-            <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of countCalls function"
-                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-        </div>
-    </div>
+
+int main() {
+    demoStatic(); // count=1
+    demoStatic(); // count=2
+    demoStatic(); // count=3
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}</code></pre>
+                
+                <p><strong>Features</strong>: Retains value between calls, local scope but program lifetime</p>
+                <p><strong>Drawback</strong>: Can't be accessed outside its function despite long lifetime</p>
+            </article>
+        </section>
 
     <div class="panel">
         <h2>4. Recursive Function</h2>
@@ -329,27 +387,7 @@ int max(int a, int b, int c) {
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
-        <h3>Inline Function (Conceptual in C99+)</h3>
-        <div class="note">
-            C does not support true inline functions like C++, but you can use the <code>inline</code> keyword in C99 and above for optimization hints.
-        </div>
-        <pre>
-#include &lt;stdio.h&gt;
-
-inline int square(int x) { return x * x; } // Inline function to calculate square
-
-int main() {
-    printf("Naruto's shadow clone squared: %d\n", square(9)); // Calls square function
-    printf("The program is executed by Nayan Kumar Gautam\n");
-    return 0;
-}
-        </pre>
-        <div class="output-placeholder">
-            <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of square function"
-                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-        </div>
-
+       
         <h3>Function Pointer Example</h3>
         <pre>
 #include &lt;stdio.h&gt;
