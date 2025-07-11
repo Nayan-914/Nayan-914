@@ -66,15 +66,15 @@ return_type function_name(parameter_list) {
         <h3>d. Components of a Function</h3>
         <ol>
             <li>
-                <b>Function Prototype:</b> Declares the function before <code>main()</code>, allowing the compiler to recognize it.<br>
+                <b>i. Function Prototype:</b> Declares the function before <code>main()</code>, allowing the compiler to recognize it.<br>
                 <pre>int add(int, int);</pre>
             </li>
             <li>
-                <b>Function Call:</b> Invokes the function, executing its code.<br>
+                <b>ii. Function Call:</b> Invokes the function, executing its code.<br>
                 <pre>add(5, 7);</pre>
             </li>
             <li>
-                <b>Function Definition:</b> Actual body of the function where the logic is implemented.<br>
+                <b>iii. Function Definition:</b> Actual body of the function where the logic is implemented.<br>
                 <pre>
 int add(int a, int b) {
     return a + b; // Returns the sum of a and b
@@ -82,7 +82,7 @@ int add(int a, int b) {
                 </pre>
             </li>
             <li>
-                <b>Return Type:</b> Specifies the type of value returned by the function (e.g., <code>int</code>, <code>void</code>, <code>float</code>).
+                <b>iv. Return Type:</b> Specifies the type of value returned by the function (e.g., <code>int</code>, <code>void</code>, <code>float</code>).
             </li>
         </ol>
     </div>
@@ -113,7 +113,7 @@ int getAge() {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of getAge function"
+            <img src="11.png" alt="Output of getAge function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
@@ -138,7 +138,7 @@ int power(int base, int exponent) {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of power function"
+            <img src="12.png" alt="Output of power function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
@@ -155,12 +155,12 @@ int main() {
 }
 
 void greet() {
-    printf("Hello from Sakura!\n"); // Prints greeting message
+    printf("Namaste!\n"); // Prints greeting message
 }
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of greet function"
+            <img src="13.png" alt="Output of greet function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
@@ -182,7 +182,7 @@ void displayInfo(char name[], int age) {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of displayInfo function"
+            <img src="14.png" alt="Output of displayInfo function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
     </div>
@@ -200,7 +200,7 @@ void displayInfo(char name[], int age) {
                     <li>Must be initialized each time block is entered</li>
                 </ul>
                 
-                <pre><code>#include <stdio.h>
+                <pre><code>#include &lt;stdio.h&gt;
 
 void demoAuto() {
     int x = 10; // same as just "int x = 10;"
@@ -215,6 +215,8 @@ int main() {
     return 0;
 }</code></pre>
                 
+                <img src="15.png" alt="Output of displayInfo function"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
                 <p><strong>Features</strong>: Local scope, block lifetime, reinitialized each call</p>
                 <p><strong>Drawback</strong>: Doesn't retain value between function calls</p>
             </article>
@@ -227,7 +229,7 @@ int main() {
                     <li>Retain value throughout program execution</li>
                 </ul>
                 
-                <pre><code>#include <stdio.h>
+                <pre><code>#include &lt;stdio.h&gt;
 
 int count; // External variable (global)
 
@@ -243,6 +245,8 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
 }</code></pre>
+                <img src="16.png" alt="Output of displayInfo function"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
                 
                 <p><strong>Features</strong>: Global scope, program lifetime, initialized to zero by default</p>
                 <p><strong>Drawback</strong>: Can lead to naming conflicts in large programs</p>
@@ -256,7 +260,7 @@ int main() {
                     <li>Can't use address operator (&) with register variables</li>
                 </ul>
                 
-                <pre><code>#include <stdio.h>
+                <pre><code>#include &lt;stdio.h&gt;
 
 int main() {
     register int counter;
@@ -268,6 +272,8 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
 }</code></pre>
+                <img src="17.png" alt="Output of displayInfo function"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
                 
                 <p><strong>Features</strong>: Fast access, local scope</p>
                 <p><strong>Drawback</strong>: Limited availability, no address can be taken</p>
@@ -281,21 +287,23 @@ int main() {
                     <li>Local static variables are visible only in their function</li>
                 </ul>
                 
-                <pre><code>#include <stdio.h>
+                <pre><code>#include &lt;stdio.h&gt;
 
-void demoStatic() {
+void Static() {
     static int count = 0; // Initialized only once
     count++;
     printf("Static count: %d\n", count);
 }
 
 int main() {
-    demoStatic(); // count=1
-    demoStatic(); // count=2
-    demoStatic(); // count=3
+    Static(); // count=1
+    Static(); // count=2
+    Static(); // count=3
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
 }</code></pre>
+                <img src="18.png" alt="Output of displayInfo function"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
                 
                 <p><strong>Features</strong>: Retains value between calls, local scope but program lifetime</p>
                 <p><strong>Drawback</strong>: Can't be accessed outside its function despite long lifetime</p>
@@ -330,13 +338,13 @@ int factorial(int n) {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of factorial function"
+            <img src="19.png" alt="Output of factorial function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
     </div>
 
     <div class="panel">
-        <h2>5. Passing Array to Function</h2>
+        <h2>5. Demonstration of passing Passing Array to Function</h2>
         <pre>
 #include &lt;stdio.h&gt;
 
@@ -357,14 +365,90 @@ void printScores(int scores[], int size) {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of printScores function"
+            <img src="20.png" alt="Output of printScores function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
     </div>
 
     <div class="panel">
-        <h2>6. Additional Notes & Examples</h2>
+        
+<!-- C Array Function Demonstrations -->
+<h3>2D Array (2 × 2 Matrix) Example</h3>
+<pre>
+#include &lt;stdio.h&gt;
 
+void displayMatrix(int mat[2][2]) {
+    printf("Matrix elements:\n");
+    for (int i = 0; i &lt; 2; i++) {
+        for (int j = 0; j &lt; 2; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrix[2][2] = {{1, 2}, {3, 4}};
+    displayMatrix(matrix);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+</pre>
+<div class="output-placeholder">
+    <b>Output Image</b>
+    <img src="23.png" alt="Output of 2D array example"
+         style="display:block;max-width:100%;height:auto;margin:0 auto;">
+</div>
+
+<h3>String Passing Example</h3>
+<pre>
+#include &lt;stdio.h&gt;
+
+void greet(char name[]) {
+    printf("Hello, %s!\n", name);
+}
+
+int main() {
+    char name[] = "Naruto";
+    greet(name);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+</pre>
+<div class="output-placeholder">
+    <b>Output Image</b>
+    <img src="24.png" alt="Output of string passing example"
+         style="display:block;max-width:100%;height:auto;margin:0 auto;">
+</div>
+
+<h3>Reverse String Example</h3>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void reverseString(char str[]) {
+    int len = strlen(str);
+    printf("Reversed string: ");
+    for (int i = len - 1; i &gt;= 0; i--) {
+        printf("%c", str[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    char name[] = "Sasuke";
+    reverseString(name);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+</pre>
+<div class="output-placeholder">
+    <b>Output Image</b>
+    <img src="25.png" alt="Output of reverse string example"
+         style="display:block;max-width:100%;height:auto;margin:0 auto;">
+</div>
+
+        
         <h3>Function with Multiple Arguments and Return Value</h3>
         <pre>
 #include &lt;stdio.h&gt;
@@ -386,7 +470,7 @@ int max(int a, int b, int c) {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of max function"
+            <img src="21.png" alt="Output of max function"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
@@ -409,7 +493,7 @@ int main() {
         </pre>
         <div class="output-placeholder">
             <b>Output Image</b>
-            <img src="your-image.jpg" alt="Output of function pointer example"
+            <img src="22.png" alt="Output of function pointer example"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
 
