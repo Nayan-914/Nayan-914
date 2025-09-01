@@ -441,6 +441,312 @@ body {
   </ul>
 </section>
 
+
+        <div class="hero">
+            <h2>Database Management Systems</h2>
+        </div>
+
+        <section id="centralized-distributed" class="panel">
+            <h2>Centralized and Distributed Database</h2>
+            
+            <h3>Introduction</h3>
+            <p>A <strong>database</strong> is an organized collection of data. How this data is stored, located, and managed defines its architecture. The two primary architectures are Centralized and Distributed.</p>
+            <ul>
+                <li><strong>Centralized Database:</strong> A database where all the data is stored, managed, and maintained at a single location (e.g., a central computer or server). All users access this single system to retrieve and update data. Examples: A single server running MySQL or Oracle for an entire company.</li>
+                <li><strong>Distributed Database:</strong> A database where the data is not stored in a single location but is spread across multiple physical locations (sites/nodes) connected via a network. These sites can be geographically dispersed. The database appears as a single logical database to the user. Examples: Global banking systems, DNS, Apache Cassandra.</li>
+            </ul>
+
+            <h3>Advantages & Disadvantages</h3>
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Centralized Database</th>
+                    <th>Distributed Database</th>
+                </tr>
+                <tr>
+                    <td><strong>Advantages</strong></td>
+                    <td>
+                        <ul>
+                            <li><strong>Simple Management:</strong> Easier to maintain, backup, and secure.</li>
+                            <li><strong>Data Consistency:</strong> Single copy ensures no inconsistency.</li>
+                            <li><strong>Lower Cost:</strong> Less hardware and software complexity.</li>
+                            <li><strong>Easy Recovery:</strong> A single point for backup and recovery.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><strong>Reliability & Availability:</strong> Failure of one site doesn't halt the entire system.</li>
+                            <li><strong>Improved Performance:</strong> Data is located near users, reducing latency.</li>
+                            <li><strong>Scalability:</strong> New sites can be added easily without shutdown.</li>
+                            <li><strong>Modular Growth:</strong> Allows for easier expansion.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Disadvantages</strong></td>
+                    <td>
+                        <ul>
+                            <li><strong>Single Point of Failure:</strong> If the server fails, the entire system is down.</li>
+                            <li><strong>Performance Bottleneck:</strong> High traffic can overload the single server.</li>
+                            <li><strong>Geographic Limitations:</strong> Remote users may experience slow access.</li>
+                            <li><strong>Scalability Issues:</strong> Scaling up is limited by the single server's capacity.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><strong>Complexity:</strong> Difficult to design, manage, and maintain.</li>
+                            <li><strong>Security:</strong> More challenging to secure multiple locations.</li>
+                            <li><strong>Higher Cost:</strong> Increased infrastructure and network costs.</li>
+                            <li><strong>Data Integrity:</strong> Maintaining consistency across sites is complex.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <h3>Comparison (with Diagram)</h3>
+            <div class="diagram">
+                <div class="diagram-content">
+                    <pre>
+Centralized Database         Distributed Database
+    +------------+            +------------+  Network  +------------+
+    |            |            |            |<--------->|            |
+    |   Server   |            |  Server 1  |           |  Server 2  |
+    |            |            |            |<--------->|            |
+    +------------+            +------------+           +------------+
+         ^                           ^                        ^
+         |                           |                        |
+    +----+----+                 +----+----+             +----+----+
+    |  User   |                 |  User   |             |  User   |
+    +---------+                 +---------+             +---------+
+                    </pre>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Centralized</th>
+                    <th>Distributed</th>
+                </tr>
+                <tr>
+                    <td><strong>Data Location</strong></td>
+                    <td>Single Location</td>
+                    <td>Multiple Locations</td>
+                </tr>
+                <tr>
+                    <td><strong>Management</strong></td>
+                    <td>Simple</td>
+                    <td>Complex</td>
+                </tr>
+                <tr>
+                    <td><strong>Hardware Cost</strong></td>
+                    <td>Low</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td><strong>Failure Impact</strong></td>
+                    <td>Total Failure</td>
+                    <td>Localized Failure</td>
+                </tr>
+                <tr>
+                    <td><strong>Consistency</strong></td>
+                    <td>Always Consistent</td>
+                    <td>Complex to Maintain</td>
+                </tr>
+                <tr>
+                    <td><strong>Access Speed</strong></td>
+                    <td>Slower for remote users</td>
+                    <td>Faster for local data access</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="database-security" class="panel">
+            <h2>Database Security</h2>
+            
+            <h3>Introduction</h3>
+            <p>Database Security refers to the collective measures used to protect and secure a database management system from malicious threats and unauthorized access. Its core objectives are to ensure the <strong>Confidentiality, Integrity, and Availability</strong> (CIA Triad) of data.</p>
+
+            <h3>Challenges</h3>
+            <ol>
+                <li><strong>Unauthorized Access:</strong> Hackers or insiders accessing data they shouldn't.</li>
+                <li><strong>SQL Injection:</strong> A code injection technique that exploits vulnerabilities to attack the database.</li>
+                <li><strong>Data Breaches:</strong> Theft or exfiltration of sensitive data.</li>
+                <li><strong>Denial of Service (DoS):</strong> Attacks that overwhelm the database, making it unavailable to legitimate users.</li>
+                <li><strong>Malware:</strong> Software designed to disrupt, damage, or gain unauthorized access to the system.</li>
+                <li><strong>Physical Security:</strong> Protecting the physical servers from theft or damage.</li>
+                <li><strong>Misconfiguration:</strong> Default passwords or unpatched software leaving the database vulnerable.</li>
+            </ol>
+
+            <h3>Security Measures</h3>
+            <ol>
+                <li><strong>Access Control:</strong> Using mechanisms like user accounts, passwords, and privileges to ensure only authorized users can perform actions.</li>
+                <li><strong>Encryption:</strong> Converting data into a coded form (ciphertext) to prevent unauthorized access, both at rest (in storage) and in transit (over a network).</li>
+                <li><strong>Authentication & Authorization:</strong> <strong>Authentication</strong> verifies a user's identity (e.g., passwords, biometrics). <strong>Authorization</strong> determines what an authenticated user is allowed to do (e.g., read-only access).</li>
+                <li><strong>Auditing:</strong> Keeping a log of all database activities to track who did what and when, which is crucial for detecting breaches and forensics.</li>
+                <li><strong>Firewalls & Network Security:</strong> Protecting the database server from network-based attacks.</li>
+                <li><strong>Backups and Recovery:</strong> Regular backups ensure data availability in case of a disaster, corruption, or ransomware attack.</li>
+            </ol>
+        </section>
+
+        <section id="dba-roles" class="panel">
+            <h2>DBA and Roles of DBA</h2>
+            
+            <h3>Introduction</h3>
+            <p>A <strong>Database Administrator (DBA)</strong> is a specialized IT professional responsible for the overall management, maintenance, performance, integrity, and security of a database.</p>
+
+            <h3>Roles and Responsibilities of a DBA</h3>
+            <ol>
+                <li><strong>Installation and Configuration:</strong> Installing the DBMS software and configuring it for an organization's needs.</li>
+                <li><strong>Database Design:</strong> Working with developers to design the logical and physical structure of the database (e.g., schema creation, normalization).</li>
+                <li><strong>Implementation:</strong> Implementing the database design and ensuring it integrates with applications.</li>
+                <li><strong>Performance Tuning:</strong> Monitoring database performance, optimizing queries, and fine-tuning the system for speed and efficiency.</li>
+                <li><strong>Backup and Recovery:</strong> Designing and implementing robust backup strategies and disaster recovery plans to prevent data loss.</li>
+                <li><strong>Security Management:</strong> Granting user permissions, enforcing security policies, and protecting data from unauthorized access.</li>
+                <li><strong>Troubleshooting:</strong> Diagnosing and resolving database-related issues and errors.</li>
+                <li><strong>Data Integrity:</strong> Ensuring the accuracy and consistency of data through constraints and validation rules.</li>
+            </ol>
+        </section>
+
+        <section id="er-diagrams" class="panel">
+            <h2>ER Diagrams (Entity-Relationship Diagrams)</h2>
+            
+            <h3>Introduction</h3>
+            <p>An ER Diagram is a visual representation of the logical structure of a database. It is a conceptual modeling tool used to describe data elements and their relationships in a high-level, easy-to-understand manner. It serves as a blueprint for designing a database.</p>
+
+            <h3>Key Components</h3>
+            
+            <h3>1. Entity</h3>
+            <ul>
+                <li><strong>Meaning:</strong> A real-world object or concept that can have data stored about it. It is analogous to a noun.</li>
+                <li><strong>Symbol:</strong> Rectangle</li>
+                <li><strong>Example:</strong> <code>Student</code>, <code>Course</code>, <code>Employee</code>, <code>Product</code>.</li>
+            </ul>
+
+            <h3>2. Attributes</h3>
+            <ul>
+                <li><strong>Meaning:</strong> The properties or characteristics that describe an entity. They are the data we want to store about an entity.</li>
+                <li><strong>Symbol:</strong> Oval</li>
+                <li><strong>Types:</strong>
+                    <ul>
+                        <li><strong>Key Attribute:</strong> The unique identifier for an entity (e.g., <code>StudentID</code>). Underlined.</li>
+                        <li><strong>Composite Attribute:</strong> Can be divided into smaller sub-parts (e.g., <code>Name</code> -> <code>FirstName</code>, <code>LastName</code>).</li>
+                        <li><strong>Multivalued Attribute:</strong> Can have more than one value (e.g., <code>PhoneNumber</code>). Double Oval.</li>
+                        <li><strong>Derived Attribute:</strong> Value is derived from another attribute (e.g., <code>Age</code> from <code>DateOfBirth</code>). Dashed Oval.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>3. Relationships</h3>
+            <ul>
+                <li><strong>Meaning:</strong> An association between two or more entities. It is analogous to a verb.</li>
+                <li><strong>Symbol:</strong> Diamond</li>
+                <li><strong>Example:</strong> A <code>Student</code> <strong>enrolls in</strong> a <code>Course</code>. An <code>Employee</code> <strong>works for</strong> a <code>Department</code>.</li>
+            </ul>
+
+            <h3>4. Cardinality</h3>
+            <ul>
+                <li><strong>Meaning:</strong> Defines the numerical relationship between entities in a relationship. It specifies how many instances of one entity are related to one instance of another entity.</li>
+                <li><strong>Types:</strong>
+                    <ul>
+                        <li><strong>One-to-One (1:1):</strong> One instance of Entity A is associated with at most one instance of Entity B. (e.g., One country has one capital city).</li>
+                        <li><strong>One-to-Many (1:N):</strong> One instance of Entity A is associated with many instances of Entity B. (e.g., One customer places many orders).</li>
+                        <li><strong>Many-to-Many (M:N):</strong> Many instances of Entity A are associated with many instances of Entity B. (e.g., Students enroll in many courses; a course has many students).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>5. Degree of a Relationship</h3>
+            <ul>
+                <li><strong>Meaning:</strong> The number of participating entities in a relationship.</li>
+                <li><strong>Types:</strong>
+                    <ul>
+                        <li><strong>Unary (Degree 1):</strong> Relationship within a single entity (e.g., An <code>Employee</code> <strong>supervises</strong> other <code>Employees</code>).</li>
+                        <li><strong>Binary (Degree 2):</strong> Relationship between two entities (most common type).</li>
+                        <li><strong>Ternary (Degree 3):</strong> Relationship between three entities simultaneously.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>ER Diagram Symbols and Meaning</h3>
+            <p>Here is a summary of the core Chen notation symbols:</p>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Symbol</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><strong>Entity</strong></td>
+                    <td>Rectangle</td>
+                    <td>A real-world object</td>
+                </tr>
+                <tr>
+                    <td><strong>Attribute</strong></td>
+                    <td>Oval</td>
+                    <td>A property of an entity</td>
+                </tr>
+                <tr>
+                    <td><strong>Key Attribute</strong></td>
+                    <td>Oval (Underlined)</td>
+                    <td>Unique identifier</td>
+                </tr>
+                <tr>
+                    <td><strong>Multivalued Attr.</strong></td>
+                    <td>Double Oval</td>
+                    <td>Attribute with multiple values</td>
+                </tr>
+                <tr>
+                    <td><strong>Derived Attribute</strong></td>
+                    <td>Dashed Oval</td>
+                    <td>Computed from another attribute</td>
+                </tr>
+                <tr>
+                    <td><strong>Relationship</strong></td>
+                    <td>Diamond</td>
+                    <td>Association between entities</td>
+                </tr>
+                <tr>
+                    <td><strong>Lines</strong></td>
+                    <td>---</td>
+                    <td>Connect attributes to entities and entities to relationships. <strong>Cardinality</strong> (1, N) is written on the lines.</td>
+                </tr>
+            </table>
+
+            <h3>Simple ER Diagram Example</h3>
+            <p>This diagram shows a <code>Student</code> entity and a <code>Course</code> entity in a Many-to-Many (M:N) relationship named <code>Enrolls</code>. The <code>Student</code> entity has key, simple, and composite attributes.</p>
+            <div class="diagram">
+                <div class="diagram-content">
+                    <pre>
+    +-----------------------+
+    |       STUDENT         |
+    +-----------------------+
+    | StudentID (PK)        |
+    | FirstName             |
+    | LastName              |
+    | DateOfBirth           |
+    +-----------------------+
+            |           |
+            |           |
+            | N         | M
+    +-------|-----------|-------+
+    |       ENROLLS_IN          |
+    +---------------------------+
+            |           |
+            |           |
+            |           |
+    +-------|-----------|-------+
+    |       COURSE             |
+    +---------------------------+
+    | CourseID (PK)            |
+    | CourseName               |
+    +---------------------------+
+                    </pre>
+                </div>
+            </div>
+        </section>
+    
+
   </main>
 
   <script>
@@ -448,8 +754,6 @@ body {
       const sidebar = document.getElementById('sidebar');
       sidebar.classList.toggle('active');
     }
-
-    // Close sidebar when clicking outside
     document.addEventListener('click', (e) => {
       const sidebar = document.getElementById('sidebar');
       const menuBtn = document.querySelector('.menu-button');
@@ -461,3 +765,4 @@ body {
 </body>
 
 </html>
+
