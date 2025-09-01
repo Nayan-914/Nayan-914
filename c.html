@@ -1,6 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <style>
+        body {
+            background-image: url('c.jpg');
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ffeb3b;
+        }
+        
+        .menu-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+        
+        .menu-button:hover {
+            background: #2575fc;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: white;
+            padding-top: 60px;
+            transition: left 0.3s;
+            z-index: 999;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s;
+        }
+        
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 25px;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .panel {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #6a11cb;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #6a11cb;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+        }
+        
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .output-placeholder {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .output-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        
+        .section-nav {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .section-nav h3 {
+            margin-top: 0;
+        }
+        
+        .section-nav ul {
+            columns: 2;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+        }
+        
+        .section-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .section-nav a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        
+        .section-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .section-nav ul {
+                columns: 1;
+                -webkit-columns: 1;
+                -moz-columns: 1;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive, 'Orbitron', sans-serif;
+            color: #fff;
+            background: #0f0f0f;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Manga panel style container */
+        .panel {
+            border: 4px solid #ff1e56;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            box-shadow:
+                6px 6px 0 #ff1e56,
+                inset 0 0 10px #ff1e56;
+            padding: 1.5rem 2rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            border-bottom: 4px solid #ff1e56;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 4px 8px rgba(255, 30, 86, 0.3);
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #ff1e56;
+            text-shadow:
+                2px 2px #000,
+                0 0 10px #ff1e56;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 1px 1px #000;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            border-color: #ff1e56;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 10px #ff1e56;
+            outline: none;
+        }
+
+        /* Menu button */
+        .menu-button {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: #ff1e56;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            z-index: 1100;
+            box-shadow:
+                0 0 8px #ff1e56,
+                inset 0 0 5px #ff1e56;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button:hover,
+        .menu-button:focus {
+            background-color: #e0144a;
+            outline: none;
+            box-shadow:
+                0 0 15px #ff1e56,
+                inset 0 0 10px #ff1e56;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            padding: 3rem 2rem 2rem 2rem;
+            border-right: 4px solid #ff1e56;
+            box-shadow:
+                6px 0 0 #ff1e56,
+                inset 0 0 15px #ff1e56;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            color: #ff1e56;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 1px 1px #000;
+            letter-spacing: 1.5px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-right: 4px solid transparent;
+            transition: all 0.3s ease;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 1px 1px #000;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a:focus {
+            color: #ff1e56;
+            border-right-color: #ff1e56;
+            background-color: #2a2a2a;
+            outline: none;
+            box-shadow: inset -6px 0 10px #ff1e56;
+        }
+
+        /* Main content */
+        main {
+            padding: 2rem 2rem 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Hero section */
+        .hero {
+            background: url('n.jpg') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 3px 3px 6px #000;
+            border: 4px solid #ff1e56;
+            border-radius: 16px;
+            box-shadow:
+                8px 8px 0 #ff1e56,
+                inset 0 0 20px #ff1e56;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 30, 86, 0.6), rgba(0, 0, 0, 0.7));
+            z-index: 0;
+            border-radius: 16px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            color: #fff;
+            font-family: 'Comic Neue', cursive;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            text-shadow:
+                2px 2px 4px #ff1e56,
+                0 0 10px #ff1e56;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Content styling */
+        h2 {
+            color: #ff1e56;
+            font-family: 'Orbitron', sans-serif;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        h3 {
+            color: #ff6b9e;
+            font-family: 'Comic Neue', cursive;
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #1a1a1a;
+            border: 2px solid #ff1e56;
+        }
+
+        th, td {
+            padding: 0.8rem;
+            border: 1px solid #ff1e56;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ff1e56;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        code {
+            background-color: #2a2a2a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #ff9eb5;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+                padding: 0.8rem 1.2rem;
+            }
+            .sidebar {
+                width: 220px;
+                padding: 2rem 1.5rem 2rem 1.5rem;
+            }
+            .menu-button {
+                font-size: 1.5rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                display: none;
+            }
+            .panel {
+                padding: 1rem;
+            }
+        }
+    </style>
     <meta charset="UTF-8">
     <title>C Programming: Functions</title>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Orbitron:wght@500&display=swap" rel="stylesheet" />
@@ -496,7 +1028,1117 @@ int main() {
             <img src="22.png" alt="Output of function pointer example"
                 style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
         </div>
+ <h2>6. Passing Arguments</h2>
+            
+            <h3>Call By Value</h3>
+            <div class="note">
+                <b>Definition:</b> A copy of the actual parameter is passed to the function. Changes made to the parameter inside the function don't affect the original value.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
 
+void increment(int x) {
+    x = x + 1;
+    printf("Inside function: %d\n", x);
+}
+
+int main() {
+    int num = 5;
+    increment(num);
+    printf("Outside function: %d\n", num); // Output: 5 (unchanged)
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of call by value example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Call By Reference</h3>
+            <div class="note">
+                <b>Definition:</b> Address of the variable is passed to the function. Changes made to the parameter affect the original value.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void increment(int *x) {
+    *x = *x + 1;
+    printf("Inside function: %d\n", *x);
+}
+
+int main() {
+    int num = 5;
+    increment(&num);
+    printf("Outside function: %d\n", num); // Output: 6 (changed)
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of call by reference example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Variable Scope Section -->
+        <div class="panel" id="variable-scope">
+            <h2>7. Variable and its Scope</h2>
+            
+            <h3>Local Variables</h3>
+            <div class="note">
+                <b>Definition:</b> Declared inside a function or block. Accessible only within that function/block. Destroyed when function/block exits.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void demo() {
+    int localVar = 10; // Local variable
+    printf("%d\n", localVar);
+}
+
+int main() {
+    demo();
+    // printf("%d\n", localVar); // This would cause an error
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of local variable example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Global Variables</h3>
+            <div class="note">
+                <b>Definition:</b> Declared outside all functions. Accessible throughout the program. Exist for entire program execution.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+int globalVar = 20; // Global variable
+
+void demo() {
+    printf("Inside function: %d\n", globalVar);
+}
+
+int main() {
+    printf("In main: %d\n", globalVar);
+    demo();
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of global variable example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Additional Storage Classes Section -->
+        <div class="panel" id="storage-classes">
+            <h2>8. Storage Classes (Extended)</h2>
+            
+            <h3>Automatic (auto)</h3>
+            <div class="note">
+                <b>Definition:</b> Default storage class for local variables. Variables are created when block is entered and destroyed when exited.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void demo() {
+    auto int x = 10; // Same as: int x = 10;
+    printf("Auto x: %d\n", x);
+}
+
+int main() {
+    demo();
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of auto storage class example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>External (extern)</h3>
+            <div class="note">
+                <b>Definition:</b> Used to declare global variables that can be accessed across multiple files.
+            </div>
+            <pre>
+// file1.c
+int count = 5; // Global variable
+
+// file2.c
+#include &lt;stdio.h&gt;
+
+extern int count; // Reference to global variable in another file
+
+int main() {
+    printf("Count: %d\n", count);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+
+            <h3>Static</h3>
+            <div class="note">
+                <b>Definition:</b> Preserves variable value between function calls. Variables exist for entire program execution.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void counter() {
+    static int count = 0; // Retains value between calls
+    count++;
+    printf("Count: %d\n", count);
+}
+
+int main() {
+    counter(); // Count: 1
+    counter(); // Count: 2
+    counter(); // Count: 3
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of static storage class example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Register</h3>
+            <div class="note">
+                <b>Definition:</b> Suggests compiler to store variable in CPU register for faster access. Cannot use address operator (&) with register variables.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    register int x = 10; // May be stored in register
+    printf("Value: %d\n", x);
+    // printf("Address: %p\n", &x); // This would cause an error
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of register storage class example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Function with Array Section -->
+        <div class="panel" id="function-array">
+            <h2>9. Function with Array</h2>
+            <div class="note">
+                <b>Definition:</b> Arrays can be passed to functions by specifying the array name without brackets.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+// Function to calculate average of array elements
+float calculateAverage(int arr[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return (float)sum / size;
+}
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    
+    float avg = calculateAverage(numbers, size);
+    printf("Average: %.2f\n", avg);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of function with array example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Recursive Functions Section -->
+        <div class="panel" id="recursive-functions">
+            <h2>10. Recursive Function (Extended)</h2>
+            
+            <h3>Syntax</h3>
+            <pre>
+return_type function_name(parameters) {
+    // Base case
+    if (condition) {
+        return value;
+    }
+    // Recursive case
+    return function_name(modified_parameters);
+}
+            </pre>
+
+            <h3>Code Example</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+// Factorial using recursion
+int factorial(int n) {
+    // Base case
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    // Recursive case
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num = 5;
+    printf("Factorial of %d is %d\n", num, factorial(num));
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of recursive function example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Advantages</h3>
+            <ul>
+                <li>Makes code cleaner and simpler for problems that can be broken down into similar subproblems</li>
+                <li>Easy to implement for problems like tree traversals, Tower of Hanoi, etc.</li>
+            </ul>
+
+            <h3>Disadvantages</h3>
+            <ul>
+                <li>Higher memory usage due to stack operations</li>
+                <li>Can be slower than iterative solutions</li>
+                <li>Risk of stack overflow for deep recursion</li>
+            </ul>
+        </div>
+
+        <!-- Structures Section -->
+        <div class="panel" id="structures">
+            <h2>11. Structure and Union: Structure</h2>
+            
+            <h3>Introduction and Syntax</h3>
+            <pre>
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+            </pre>
+
+            <h3>Structure Size</h3>
+            <div class="note">
+                <b>Note:</b> The size of a structure may be larger than the sum of its members due to padding for alignment.
+            </div>
+            <pre>
+#include &lt;stdio.h&gt;
+
+struct Example {
+    int a;      // 4 bytes
+    char b;     // 1 byte
+    float c;    // 4 bytes
+}; // Total size may be 12 bytes due to padding
+
+int main() {
+    printf("Size of struct Example: %lu bytes\n", sizeof(struct Example));
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of structure size example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Accessing Members of Structure</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s1;
+    s1.rollNo = 101;
+    strcpy(s1.name, "John");
+    s1.marks = 85.5;
+    
+    printf("Roll No: %d\n", s1.rollNo);
+    printf("Name: %s\n", s1.name);
+    printf("Marks: %.2f\n", s1.marks);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of structure member access example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Nested Structure</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+struct Address {
+    char city[50];
+    char state[50];
+};
+
+struct Employee {
+    int id;
+    char name[50];
+    struct Address addr; // Nested structure
+};
+
+int main() {
+    struct Employee emp = {101, "Alice", {"New York", "NY"}};
+    
+    printf("ID: %d\n", emp.id);
+    printf("Name: %s\n", emp.name);
+    printf("City: %s\n", emp.addr.city);
+    printf("State: %s\n", emp.addr.state);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of nested structure example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Array of Structure</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student class[3];
+    
+    for(int i = 0; i < 3; i++) {
+        printf("Enter details for student %d:\n", i+1);
+        printf("Roll No: ");
+        scanf("%d", &class[i].rollNo);
+        printf("Name: ");
+        scanf("%s", class[i].name);
+        printf("Marks: ");
+        scanf("%f", &class[i].marks);
+    }
+    
+    // Display all students
+    for(int i = 0; i < 3; i++) {
+        printf("\nStudent %d: Roll No: %d, Name: %s, Marks: %.2f\n", 
+               i+1, class[i].rollNo, class[i].name, class[i].marks);
+    }
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of array of structure example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Passing Structure to Function</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+void displayStudent(struct Student s) {
+    printf("Roll No: %d\n", s.rollNo);
+    printf("Name: %s\n", s.name);
+    printf("Marks: %.2f\n", s.marks);
+}
+
+void modifyStudent(struct Student *s) {
+    s->marks += 5; // Increase marks by 5
+}
+
+int main() {
+    struct Student s1 = {101, "Bob", 75.5};
+    
+    printf("Before modification:\n");
+    displayStudent(s1);
+    
+    modifyStudent(&s1);
+    
+    printf("\nAfter modification:\n");
+    displayStudent(s1);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of passing structure to function example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Unions Section -->
+        <div class="panel" id="unions">
+            <h2>12. Structure and Union: Union</h2>
+            
+            <h3>Introduction and Syntax</h3>
+            <pre>
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+            </pre>
+
+            <h3>Comparison between Structure and Union</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <tr style="background: #6a11cb; color: white;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">Aspect</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Structure</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Union</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Memory</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Each member has separate memory</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">All members share same memory</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">Size</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Sum of all members (with padding)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Size of largest member</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Access</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">All members can be accessed</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Only one member can be accessed at a time</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">Usage</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">When all data needs to be stored</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">When only one type of data is needed at a time</td>
+                </tr>
+            </table>
+
+            <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+    
+    printf("Size of union: %lu bytes\n", sizeof(data));
+    
+    data.i = 10;
+    printf("data.i: %d\n", data.i);
+    
+    data.f = 220.5;
+    printf("data.f: %.2f\n", data.f);
+    
+    strcpy(data.str, "C Programming");
+    printf("data.str: %s\n", data.str);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of union example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+        </div>
+
+        <!-- Pointers Section -->
+        <div class="panel" id="pointers">
+            <h2>13. Pointers</h2>
+            
+            <h3>Introduction and Syntax</h3>
+            <pre>
+int var = 10;
+int *ptr = &var; // Pointer declaration and initialization
+            </pre>
+
+            <h3>Usage and Working</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int var = 10;
+    int *ptr = &var;
+    
+    printf("Value of var: %d\n", var);
+    printf("Address of var: %p\n", &var);
+    printf("Value of ptr: %p\n", ptr);
+    printf("Value pointed by ptr: %d\n", *ptr);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of pointer example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Concept of Value and Address</h3>
+            <ul>
+                <li><code>&</code> operator gives address of variable</li>
+                <li><code>*</code> operator dereferences pointer to get value</li>
+            </ul>
+
+            <h3>Declaration and Initialization</h3>
+            <pre>
+int *ptr1;          // Declaration
+int *ptr2 = NULL;   // Initialization with NULL
+int var = 5;
+int *ptr3 = &var;   // Initialization with address
+            </pre>
+
+            <h3>Pointer and Function</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swap(&x, &y);
+    printf("After swap: x = %d, y = %d\n", x, y);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of pointer and function example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Call by Reference</h3>
+            <pre>
+#include &lt;stdio.h&gt;
+
+void modifyValue(int *ptr) {
+    *ptr = *ptr * 2; // Double the value
+}
+
+int main() {
+    int value = 5;
+    printf("Before modification: %d\n", value);
+    modifyValue(&value);
+    printf("After modification: %d\n", value);
+    printf("The program is executed by Nayan Kumar Gautam\n");
+    return 0;
+}
+            </pre>
+            <div class="output-placeholder">
+                <b>Output Image</b>
+                <img src="placeholder.png" alt="Output of call by reference example"
+                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+            </div>
+
+            <h3>Comparison between Call by Value and Call by Reference</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <tr style="background: #6a11cb; color: white;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">Aspect</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Call by Value</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Call by Reference</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Parameter</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Copy of value</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Address of variable</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">Changes</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Not reflected in original</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Reflected in original</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Memory</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">More (creates copy)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Less (uses address)</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 10px; border: 1px solid #ddd;">Safety</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">More (original safe)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Less (original can be modified)</td>
+                </tr>
+            </table>
+
+            
+
+ <h2>Pointers with Arrays</h2>
+                
+                <h3>Introduction</h3>
+                <p>Pointers and arrays have a close relationship in C. An array name is essentially a constant pointer to the first element of the array.</p>
+                
+                <h3>Code Example</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = arr; // ptr points to the first element of arr
+    
+    printf("Array elements using pointer:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("arr[%d] = %d\n", i, *(ptr + i));
+    }
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Efficient access to array elements</li>
+                    <li>Dynamic memory allocation for arrays</li>
+                    <li>Ability to pass arrays to functions efficiently</li>
+                    <li>Enables pointer arithmetic for array traversal</li>
+                </ul>
+                
+                <h3>Disadvantages</h3>
+                <ul>
+                    <li>Potential for pointer arithmetic errors</li>
+                    <li>Easy to access out-of-bounds memory</li>
+                    <li>Can lead to difficult-to-debug issues</li>
+                    <li>Requires careful memory management</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="structures">
+            <div class="panel">
+                <h2>Structure and Union</h2>
+                
+                <h3 id="structures-intro">Structure: Introduction and Syntax</h3>
+                <p>A structure is a user-defined data type that groups related variables of different data types.</p>
+                
+                <h4>Syntax</h4>
+                <pre><code>
+struct structure_name {
+    data_type member1;
+    data_type member2;
+    // ...
+};
+                </code></pre>
+                
+                <h3>Structure Size</h3>
+                <p>The size of a structure is the sum of sizes of all its members, plus possible padding added by the compiler for alignment.</p>
+                
+                <h3>Accessing Members of Structure</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int id;
+    char name[50];
+    float percentage;
+};
+
+int main() {
+    struct Student student1;
+    
+    // Accessing structure members
+    student1.id = 101;
+    strcpy(student1.name, "John Doe");
+    student1.percentage = 85.5;
+    
+    printf("Student ID: %d\n", student1.id);
+    printf("Student Name: %s\n", student1.name);
+    printf("Percentage: %.2f\n", student1.percentage);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3 id="nested-structures">Nested Structure</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+struct Address {
+    char city[50];
+    char state[50];
+};
+
+struct Employee {
+    int id;
+    char name[50];
+    struct Address addr; // Nested structure
+};
+
+int main() {
+    struct Employee emp1 = {101, "Alice", {"New York", "NY"}};
+    
+    printf("Employee ID: %d\n", emp1.id);
+    printf("Employee Name: %s\n", emp1.name);
+    printf("City: %s\n", emp1.addr.city);
+    printf("State: %s\n", emp1.addr.state);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3 id="array-structures">Array of Structure</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+struct Book {
+    int id;
+    char title[100];
+    float price;
+};
+
+int main() {
+    struct Book library[3];
+    
+    // Input books information
+    for(int i = 0; i < 3; i++) {
+        printf("Enter book %d details:\n", i+1);
+        printf("ID: ");
+        scanf("%d", &library[i].id);
+        printf("Title: ");
+        scanf("%s", library[i].title);
+        printf("Price: ");
+        scanf("%f", &library[i].price);
+    }
+    
+    // Display books information
+    printf("\nLibrary Books:\n");
+    for(int i = 0; i < 3; i++) {
+        printf("Book %d: ID=%d, Title=%s, Price=%.2f\n", 
+               i+1, library[i].id, library[i].title, library[i].price);
+    }
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3 id="function-structures">Passing Structure to Function</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+struct Point {
+    int x;
+    int y;
+};
+
+// Function to display point
+void displayPoint(struct Point p) {
+    printf("Point coordinates: (%d, %d)\n", p.x, p.y);
+}
+
+// Function to modify point (using pointer)
+void modifyPoint(struct Point *p, int x, int y) {
+    p->x = x;
+    p->y = y;
+}
+
+int main() {
+    struct Point p1 = {5, 10};
+    
+    displayPoint(p1); // Pass by value
+    
+    modifyPoint(&p1, 15, 20); // Pass by reference
+    displayPoint(p1);
+    
+    return 0;
+}
+                </code></pre>
+            </div>
+        </section>
+        
+        <section id="unions">
+            <div class="panel">
+                <h2 id="unions-intro">Union: Introduction and Syntax</h2>
+                <p>A union is a user-defined data type that allows storing different data types in the same memory location.</p>
+                
+                <h4>Syntax</h4>
+                <pre><code>
+union union_name {
+    data_type member1;
+    data_type member2;
+    // ...
+};
+                </code></pre>
+                
+                <h3>Comparison between Structure and Union</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Structure</th>
+                        <th>Union</th>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>Each member has its own memory</td>
+                        <td>All members share the same memory</td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>Sum of sizes of all members (plus padding)</td>
+                        <td>Size of the largest member</td>
+                    </tr>
+                    <tr>
+                        <td>Access</td>
+                        <td>All members can be accessed at any time</td>
+                        <td>Only one member can be accessed at a time</td>
+                    </tr>
+                    <tr>
+                        <td>Use Case</td>
+                        <td>Group related data of different types</td>
+                        <td>Memory efficient when only one member is needed at a time</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <section>
+            <div class="panel">
+                <h2 id="pointers-intro">Pointers: Introduction and Syntax</h2>
+                <p>A pointer is a variable that stores the memory address of another variable.</p>
+                
+                <h4>Syntax</h4>
+                <pre><code>
+data_type *pointer_name;
+                </code></pre>
+                
+                <h3>Usage and Working</h3>
+                <p>Pointers are used for:</p>
+                <ul>
+                    <li>Dynamic memory allocation</li>
+                    <li>Efficient array handling</li>
+                    <li>Implementing data structures</li>
+                    <li>Function arguments (call by reference)</li>
+                </ul>
+                
+                <h3>Concept of Value and Address</h3>
+                <p>Every variable has an address in memory where its value is stored. A pointer holds this address.</p>
+                
+                <h3>Declaration and Initialization</h3>
+                <pre><code>
+int num = 10;     // Integer variable
+int *ptr;         // Pointer declaration
+ptr = &num;       // Pointer initialization with address of num
+
+// Alternatively, declaration and initialization in one line
+int *ptr = &num;
+                </code></pre>
+                
+                <h3 id="functions-pointers">Pointer and Function</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function using pointers
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swap(&x, &y); // Passing addresses
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3>Call by Reference with Code Example</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function to modify value using call by reference
+void increment(int *num) {
+    (*num)++; // Increment the value at the address
+}
+
+int main() {
+    int value = 5;
+    
+    printf("Before increment: %d\n", value);
+    increment(&value); // Pass address of value
+    printf("After increment: %d\n", value);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <h3>Comparison between Call by Value and Call by Reference</h3>
+                <table>
+                    <tr>
+                        <th>Call by Value</th>
+                        <th>Call by Reference</th>
+                    </tr>
+                    <tr>
+                        <td>Passes copy of the value</td>
+                        <td>Passes address of the variable</td>
+                    </tr>
+                    <tr>
+                        <td>Original value not modified</td>
+                        <td>Original value can be modified</td>
+                    </tr>
+                    <tr>
+                        <td>Uses more memory for large data</td>
+                        <td>Efficient for large data structures</td>
+                    </tr>
+                    <tr>
+                        <td>Safer as original data protected</td>
+                        <td>Risk of unintended modifications</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+        <section id="file-handling">
+            <div class="panel">
+                <h2 id="file-concepts">File Handling</h2>
+                
+                <h3>Concept of Data File</h3>
+                <p>A data file is a collection of related records stored in secondary storage. It provides persistent storage beyond program execution.</p>
+                
+                <h3>Need for File Handling in C</h3>
+                <ul>
+                    <li>Persistence: Data remains after program termination</li>
+                    <li>Large data storage: Handle data too large for memory</li>
+                    <li>Data sharing: Multiple programs can access the same data</li>
+                    <li>Backup and recovery: Data can be saved and restored</li>
+                </ul>
+                
+                <h3>Sequential and Random Files</h3>
+                <table>
+                    <tr>
+                        <th>Sequential Files</th>
+                        <th>Random Files</th>
+                    </tr>
+                    <tr>
+                        <td>Data accessed in sequential order</td>
+                        <td>Data accessed in any order directly</td>
+                    </tr>
+                    <tr>
+                        <td>Slower for large files</td>
+                        <td>Faster access to specific records</td>
+                    </tr>
+                    <tr>
+                        <td>Simple to implement</td>
+                        <td>More complex implementation</td>
+                    </tr>
+                    <tr>
+                        <td>Suitable for streaming data</td>
+                        <td>Suitable for database-like operations</td>
+                    </tr>
+                </table>
+                
+                <h3 id="file-functions">File Handling Functions</h3>
+                
+                <h4>fopen()</h4>
+                <p><strong>Purpose:</strong> Opens a file for reading, writing, or appending.</p>
+                <p><strong>Syntax:</strong> FILE *fopen(const char *filename, const char *mode);</p>
+                
+                <h4>fclose()</h4>
+                <p><strong>Purpose:</strong> Closes an opened file.</p>
+                <p><strong>Syntax:</strong> int fclose(FILE *stream);</p>
+                
+                <h4>getc()</h4>
+                <p><strong>Purpose:</strong> Reads a character from a file.</p>
+                <p><strong>Syntax:</strong> int getc(FILE *stream);</p>
+                
+                <h4>putc()</h4>
+                <p><strong>Purpose:</strong> Writes a character to a file.</p>
+                <p><strong>Syntax:</strong> int putc(int char, FILE *stream);</p>
+                
+                <h4>fprintf()</h4>
+                <p><strong>Purpose:</strong> Writes formatted output to a file.</p>
+                <p><strong>Syntax:</strong> int fprintf(FILE *stream, const char *format, ...);</p>
+                
+                <h4>fscanf()</h4>
+                <p><strong>Purpose:</strong> Reads formatted input from a file.</p>
+                <p><strong>Syntax:</strong> int fscanf(FILE *stream, const char *format, ...);</p>
+                
+                <h4>getw()</h4>
+                <p><strong>Purpose:</strong> Reads an integer from a file.</p>
+                <p><strong>Syntax:</strong> int getw(FILE *stream);</p>
+                
+                <h4>putw()</h4>
+                <p><strong>Purpose:</strong> Writes an integer to a file.</p>
+                <p><strong>Syntax:</strong> int putw(int num, FILE *stream);</p>
+                
+                <h4>fgets()</h4>
+                <p><strong>Purpose:</strong> Reads a string from a file.</p>
+                <p><strong>Syntax:</strong> char *fgets(char *str, int n, FILE *stream);</p>
+                
+                <h4>fputs()</h4>
+                <p><strong>Purpose:</strong> Writes a string to a file.</p>
+                <p><strong>Syntax:</strong> int fputs(const char *str, FILE *stream);</p>
+                
+                <h4>fread()</h4>
+                <p><strong>Purpose:</strong> Reads data from a file into a block of memory.</p>
+                <p><strong>Syntax:</strong> size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);</p>
+                
+                <h4>fwrite()</h4>
+                <p><strong>Purpose:</strong> Writes data from a block of memory to a file.</p>
+                <p><strong>Syntax:</strong> size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);</p>
+                
+                <h4>remove()</h4>
+                <p><strong>Purpose:</strong> Deletes a file.</p>
+                <p><strong>Syntax:</strong> int remove(const char *filename);</p>
+                
+                <h4>rename()</h4>
+                <p><strong>Purpose:</strong> Renames a file.</p>
+                <p><strong>Syntax:</strong> int rename(const char *old_filename, const char *new_filename);</p>
+            </div>
+        </section>
 </main>
 
 <script>
