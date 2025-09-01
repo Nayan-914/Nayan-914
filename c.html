@@ -7,6 +7,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+ /* Fixed Table styling */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 1.5rem 0;
+          background-color: #1a1a1a;
+          border: 2px solid #ff1e56;
+          color: #fff; /* Added to ensure text is visible */
+      }
+
+      th, td {
+          padding: 0.8rem;
+          border: 1px solid #ff1e56;
+          text-align: left;
+          color: #fff; /* Explicitly set text color */
+      }
+
+      th {
+          background-color: #ff1e56;
+          color: #fff;
+          font-family: 'Orbitron', sans-serif;
+      }
+
+      tr:nth-child(even) {
+          background-color: #2a2a2a;
+      }
+
+      /* Ensure text is visible in all table cells */
+      tr, td {
+          color: #fff !important;
+      }
 
 body {
     font-family: 'Comic Neue', cursive, 'Orbitron', sans-serif;
