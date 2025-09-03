@@ -327,6 +327,70 @@ code {
     font-family: monospace;
     color: #ff9eb5;
 }
+      
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            background: #3a3a3a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: -10px;
+            margin-top: 15px;
+        }
+ .output {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #ff1e56;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .output::before {
+            content: "Output:";
+            display: block;
+            font-weight: bold;
+            color: #ff1e56;
+            margin-bottom: 0.5rem;
+        }
+
+        .explanation {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #ff6b9e;
+        }
+
+        .explanation::before {
+            content: "Explanation:";
+            display: block;
+            font-weight: bold;
+            color: #ff6b9e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Copy button for code blocks */
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #ff1e56;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .copy-btn:hover {
+            opacity: 1;
+        }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -406,6 +470,7 @@ code {
         <div class="note">
             <b>Q:</b> What is a function in C?<br>
             <b>A:</b> A function is a self-contained block of code that performs a specific task. Functions enhance modularity and reusability in programs, allowing for easier maintenance and organization of code.
+  <p><strong>Explanation:</strong> Functions help avoid code repetition and make programs easier to debug and maintain. Each function should have a single, well-defined purpose.</p>
         </div>
 
         <h3>b. Syntax of a Function</h3>
@@ -421,16 +486,21 @@ return_type function_name(parameter_list) {
             <li><b>Library functions:</b> Predefined functions such as <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>, etc., which are included in C libraries.</li>
             <li><b>User-defined functions:</b> Functions created by the programmer to perform specific tasks, allowing for custom functionality in programs.</li>
         </ul>
+<p><strong>Explanation:</strong> Library functions save development time as they're pre-tested and optimized. User-defined functions allow you to create custom operations tailored to your program's specific needs.</p>
 
         <h3>d. Components of a Function</h3>
         <ol>
             <li>
                 <b>i. Function Prototype:</b> Declares the function before <code>main()</code>, allowing the compiler to recognize it.<br>
                 <pre>int add(int, int);</pre>
+<p><strong>Explanation:</strong> The prototype tells the compiler about the function's name, return type, and parameters before it's defined. This allows you to call the function before its actual definition in the code.</p>
+
             </li>
             <li>
                 <b>ii. Function Call:</b> Invokes the function, executing its code.<br>
                 <pre>add(5, 7);</pre>
+<p><strong>Explanation:</strong> When a function is called, the program execution jumps to the function, executes its code, and then returns to the point where it was called.</p>
+
             </li>
             <li>
                 <b>iii. Function Definition:</b> Actual body of the function where the logic is implemented.<br>
@@ -439,9 +509,12 @@ int add(int a, int b) {
     return a + b; // Returns the sum of a and b
 }
                 </pre>
+<p><strong>Explanation:</strong> The definition contains the actual code that performs the function's task. It must match the prototype in return type, name, and parameters.</p>
+
             </li>
             <li>
                 <b>iv. Return Type:</b> Specifies the type of value returned by the function (e.g., <code>int</code>, <code>void</code>, <code>float</code>).
+  <p><strong>Explanation:</strong> The return type determines what kind of data the function provides back to the calling code. If a function doesn't return anything, its return type should be <code>void</code>.</p>
             </li>
         </ol>
     </div>
@@ -454,6 +527,7 @@ int add(int a, int b) {
             <b>Q:</b> What does it mean?<br>
             <b>A:</b> The function returns a value but takes no parameters, making it simple to use.
         </div>
+<p><strong>Explanation:</strong> These functions don't require any input but provide an output. They're useful when you need to generate or calculate values without external input.</p>
         <pre>
 #include &lt;stdio.h&gt;
 
@@ -477,7 +551,8 @@ int getAge() {
         </div>
 
         <h3>ii. Function with Return Type and with Arguments</h3>
-        <pre>
+       <p><strong>Explanation:</strong> These functions take input parameters and return a value. They're the most common type of function, allowing for flexible and reusable code.</p>
+ <pre>
 #include &lt;stdio.h&gt;
 
 int power(int base, int exponent); // Function prototype
@@ -502,7 +577,8 @@ int power(int base, int exponent) {
         </div>
 
         <h3>iii. Function with No Return Type and No Arguments</h3>
-        <pre>
+         <p><strong>Explanation:</strong> These functions don't take input or return output. They're typically used for performing actions like printing messages or modifying global variables.</p>
+<pre>
 #include &lt;stdio.h&gt;
 
 void greet(); // Function prototype
@@ -524,6 +600,7 @@ void greet() {
         </div>
 
         <h3>iv. Function with No Return Type but with Arguments</h3>
+<p><strong>Explanation:</strong> These functions take input parameters but don't return a value. They're useful for performing actions that require input but don't need to provide output directly.</p>
         <pre>
 #include &lt;stdio.h&gt;
 
@@ -558,7 +635,8 @@ void displayInfo(char name[], int age) {
                     <li>Variables are created when block is entered and destroyed when block is exited</li>
                     <li>Must be initialized each time block is entered</li>
                 </ul>
-                
+                <p><strong>Explanation:</strong> Auto variables are limited to the block where they're declared. They're created when the block is entered and destroyed when exiting, making them efficient for temporary storage.</p>
+
                 <pre><code>#include &lt;stdio.h&gt;
 
 void demoAuto() {
@@ -587,7 +665,7 @@ int main() {
                     <li>Variables are defined outside any function</li>
                     <li>Retain value throughout program execution</li>
                 </ul>
-                
+                <p><strong>Explanation:</strong> Extern variables have global scope and exist for the entire program execution. They're accessible from any function in the program and even across multiple files.</p>
                 <pre><code>#include &lt;stdio.h&gt;
 
 int count; // External variable (global)
@@ -674,7 +752,10 @@ int main() {
         <div class="note">
             <b>Q:</b> What is recursion?<br>
             <b>A:</b> Recursion is when a function calls itself to solve a smaller instance of the same problem, often used for tasks like calculating factorials.
+
         </div>
+<p><strong>Explanation:</strong> Recursion is a technique where a function calls itself to solve smaller versions of the same problem. It requires a base case to stop the recursion and a recursive case that calls the function with modified parameters.</p>
+
         <h3>Example: Factorial using Recursion (Neji’s Computation)</h3>
         <pre>
 #include &lt;stdio.h&gt;
@@ -887,6 +968,7 @@ int main() {
             <div class="note">
                 <b>Definition:</b> Address of the variable is passed to the function. Changes made to the parameter affect the original value.
             </div>
+<p><strong>Explanation:</strong> In call by value, the function works with a copy of the argument. Any changes made to the parameter inside the function don't affect the original variable.</p>
             <pre>
 #include &lt;stdio.h&gt;
 
@@ -903,23 +985,30 @@ int main() {
     return 0;
 }
             </pre>
-            <div class="output-placeholder">
-                <b>Output Image</b>
-                <img src="reference.png" alt="Output of call by reference example"
-                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+                        <div class="output-placeholder">
+                <b>Output:</b>
+                <pre>
+Inside function: 6
+Outside function: 6
+The program is executed by Nayan Kumar Gautam
+                </pre>
             </div>
+        
         </div>
 
         <!-- Variable Scope Section -->
         <div class="panel" id="variable-scope">
-            <h2>7. Variable and its Scope</h2>
+     <h2>7. Variable and its Scope</h2>
+            <p>Variable scope determines where in the program a variable can be accessed. Understanding scope is crucial for writing bug-free code and managing memory efficiently.</p>
             
             <h3>Local Variables</h3>
             <div class="note">
                 <b>Definition:</b> Declared inside a function or block. Accessible only within that function/block. Destroyed when function/block exits.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                Local variables are created when the function is called and destroyed when the function exits. They are not accessible outside their function, which helps prevent unintended modifications from other parts of the program.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 void demo() {
     int localVar = 10; // Local variable
@@ -931,20 +1020,18 @@ int main() {
     // printf("%d\n", localVar); // This would cause an error
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-            <div class="output-placeholder">
-                <b>Output Image</b>
-                <img src="local.png" alt="Output of local variable example"
-                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-            </div>
+}</code></pre>
+            <div class="output">10
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Global Variables</h3>
             <div class="note">
                 <b>Definition:</b> Declared outside all functions. Accessible throughout the program. Exist for entire program execution.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                Global variables are declared outside any function and can be accessed from any part of the program. They persist for the entire duration of the program execution. While convenient, overuse of global variables can make code harder to debug and maintain.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 int globalVar = 20; // Global variable
 
@@ -957,25 +1044,25 @@ int main() {
     demo();
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-            <div class="output-placeholder">
-                <b>Output Image</b>
-                <img src="global.png" alt="Output of global variable example"
-                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
-            </div>
+}</code></pre>
+            <div class="output">In main: 20
+Inside function: 20
+The program is executed by Nayan Kumar Gautam</div>
         </div>
 
         <!-- Additional Storage Classes Section -->
         <div class="panel" id="storage-classes">
             <h2>8. Storage Classes (Extended)</h2>
+            <p>Storage classes in C define the scope, visibility, and lifetime of variables. They determine how variables are stored in memory and accessed throughout the program.</p>
             
             <h3>Automatic (auto)</h3>
             <div class="note">
                 <b>Definition:</b> Default storage class for local variables. Variables are created when block is entered and destroyed when exited.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                The 'auto' storage class is the default for all local variables. These variables are automatically created when the function is called and destroyed when the function exits. The 'auto' keyword is rarely used explicitly since it's the default.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 void demo() {
     auto int x = 10; // Same as: int x = 10;
@@ -986,16 +1073,18 @@ int main() {
     demo();
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-       
+}</code></pre>
+            <div class="output">Auto x: 10
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>External (extern)</h3>
             <div class="note">
                 <b>Definition:</b> Used to declare global variables that can be accessed across multiple files.
             </div>
-            <pre>
-// file1.c
+            <div class="explanation">
+                The 'extern' keyword is used to declare a global variable that is defined in another file. This allows you to share variables between multiple source files. The variable is declared in one file and can be accessed in others using 'extern'.
+            </div>
+            <pre><code>// file1.c
 int count = 5; // Global variable
 
 // file2.c
@@ -1007,15 +1096,18 @@ int main() {
     printf("Count: %d\n", count);
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
+}</code></pre>
+            <div class="output">Count: 5
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Static</h3>
             <div class="note">
                 <b>Definition:</b> Preserves variable value between function calls. Variables exist for entire program execution.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                The 'static' keyword causes a variable to retain its value between function calls. Static local variables are initialized only once and persist for the duration of the program. They are not destroyed when the function exits.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 void counter() {
     static int count = 0; // Retains value between calls
@@ -1029,16 +1121,20 @@ int main() {
     counter(); // Count: 3
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-        
+}</code></pre>
+            <div class="output">Count: 1
+Count: 2
+Count: 3
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Register</h3>
             <div class="note">
                 <b>Definition:</b> Suggests compiler to store variable in CPU register for faster access. Cannot use address operator (&) with register variables.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                The 'register' keyword suggests to the compiler that the variable should be stored in a CPU register for faster access. However, the compiler may ignore this suggestion. Register variables cannot have their address taken using the & operator.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 int main() {
     register int x = 10; // May be stored in register
@@ -1046,9 +1142,9 @@ int main() {
     // printf("Address: %p\n", &x); // This would cause an error
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-            
+}</code></pre>
+            <div class="output">Value: 10
+The program is executed by Nayan Kumar Gautam</div>
         </div>
 
         <!-- Function with Array Section -->
@@ -1057,8 +1153,10 @@ int main() {
             <div class="note">
                 <b>Definition:</b> Arrays can be passed to functions by specifying the array name without brackets.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                When passing arrays to functions, we actually pass a pointer to the first element of the array. This allows the function to modify the original array elements. The size of the array is typically passed as a separate parameter.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 // Function to calculate average of array elements
 float calculateAverage(int arr[], int size) {
@@ -1078,28 +1176,31 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     
     return 0;
-}
-            </pre>
-   
+}</code></pre>
+            <div class="output">Average: 30.00
+The program is executed by Nayan Kumar Gautam</div>
+        </div>
+
         <!-- Recursive Functions Section -->
         <div class="panel" id="recursive-functions">
             <h2>10. Recursive Function (Extended)</h2>
+            <p>Recursion is a programming technique where a function calls itself to solve a smaller instance of the same problem. It's particularly useful for problems that can be broken down into similar subproblems.</p>
             
             <h3>Syntax</h3>
-            <pre>
-return_type function_name(parameters) {
+            <pre><code>return_type function_name(parameters) {
     // Base case
     if (condition) {
         return value;
     }
     // Recursive case
     return function_name(modified_parameters);
-}
-            </pre>
+}</code></pre>
 
             <h3>Code Example</h3>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                This example demonstrates calculating factorial using recursion. The base case is when n is 0 or 1, returning 1. The recursive case multiplies n by the factorial of n-1.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 // Factorial using recursion
 int factorial(int n) {
@@ -1116,9 +1217,9 @@ int main() {
     printf("Factorial of %d is %d\n", num, factorial(num));
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
-       
+}</code></pre>
+            <div class="output">Factorial of 5 is 120
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Advantages</h3>
             <ul>
@@ -1137,22 +1238,26 @@ int main() {
         <!-- Structures Section -->
         <div class="panel" id="structures">
             <h2>11. Structure and Union: Structure</h2>
+            <p>Structures allow you to combine data items of different kinds. They are used to represent a record, making it easier to handle related data elements.</p>
             
             <h3>Introduction and Syntax</h3>
-            <pre>
-struct Student {
+            <div class="explanation">
+                Structures are user-defined data types that group related variables of different types. The 'struct' keyword is used to define a structure, which can then be used to create variables of that type.
+            </div>
+            <pre><code>struct Student {
     int rollNo;
     char name[50];
     float marks;
-};
-            </pre>
+};</code></pre>
 
             <h3>Structure Size</h3>
             <div class="note">
                 <b>Note:</b> The size of a structure may be larger than the sum of its members due to padding for alignment.
             </div>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                Structure padding is added by the compiler to align data for efficient access. The actual size of a structure can be determined using the sizeof operator and may be larger than the sum of its members due to this padding.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 struct Example {
     int a;      // 4 bytes
@@ -1164,13 +1269,15 @@ int main() {
     printf("Size of struct Example: %lu bytes\n", sizeof(struct Example));
     printf("The program is executed by Nayan Kumar Gautam\n");
     return 0;
-}
-            </pre>
- 
+}</code></pre>
+            <div class="output">Size of struct Example: 12 bytes
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Accessing Members of Structure</h3>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                Structure members are accessed using the dot (.) operator. Each member can be accessed and manipulated individually, allowing for organized data handling.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 
 struct Student {
@@ -1191,13 +1298,17 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     
     return 0;
-}
-            </pre>
-    
+}</code></pre>
+            <div class="output">Roll No: 101
+Name: John
+Marks: 85.50
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Nested Structure</h3>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                A structure can contain another structure as its member. This is called nesting of structures and allows for more complex data organization.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 struct Address {
     char city[50];
@@ -1220,13 +1331,18 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     
     return 0;
-}
-            </pre>
-       
+}</code></pre>
+            <div class="output">ID: 101
+Name: Alice
+City: New York
+State: NY
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Array of Structure</h3>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                You can create arrays of structures to handle multiple records of the same type. This is useful for representing collections of similar data items.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 struct Student {
     int rollNo;
@@ -1255,13 +1371,30 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     
     return 0;
-}
-            </pre>
-          
+}</code></pre>
+            <div class="output">Enter details for student 1:
+Roll No: 101
+Name: John
+Marks: 85.5
+Enter details for student 2:
+Roll No: 102
+Name: Jane
+Marks: 90.0
+Enter details for student 3:
+Roll No: 103
+Name: Bob
+Marks: 78.5
+
+Student 1: Roll No: 101, Name: John, Marks: 85.50
+Student 2: Roll No: 102, Name: Jane, Marks: 90.00
+Student 3: Roll No: 103, Name: Bob, Marks: 78.50
+The program is executed by Nayan Kumar Gautam</div>
 
             <h3>Passing Structure to Function</h3>
-            <pre>
-#include &lt;stdio.h&gt;
+            <div class="explanation">
+                Structures can be passed to functions either by value or by reference. Passing by reference is more efficient for large structures as it avoids copying the entire structure.
+            </div>
+            <pre><code>#include &lt;stdio.h&gt;
 
 struct Student {
     int rollNo;
@@ -1292,208 +1425,122 @@ int main() {
     printf("The program is executed by Nayan Kumar Gautam\n");
     
     return 0;
-}
-            </pre>
-           
+}</code></pre>
+            <div class="output">Before modification:
+Roll No: 101
+Name: Bob
+Marks: 75.50
+
+After modification:
+Roll No: 101
+Name: Bob
+Marks: 80.50
+The program is executed by Nayan Kumar Gautam</div>
         </div>
+             <h3>Comparison between Call by Value and Call by Reference</h3>
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Call by Value</th>
+                        <th>Call by Reference</th>
+                    </tr>
+                    <tr>
+                        <td>Parameter</td>
+                        <td>Copy of value</td>
+                        <td>Address of variable</td>
+                    </tr>
+                    <tr>
+                        <td>Changes</td>
+                        <td>Not reflected in original</td>
+                        <td>Reflected in original</td>
+                    </tr>
+                    <tr>
+                        <td>Memory</td>
+                        <td>More (creates copy)</td>
+                        <td>Less (uses address)</td>
+                    </tr>
+                    <tr>
+                        <td>Safety</td>
+                        <td>More (original safe)</td>
+                        <td>Less (original can be modified)</td>
+                    </tr>
+                </table>
 
-        <!-- Unions Section -->
-        <div class="panel" id="unions">
-            <h2>12. Structure and Union: Union</h2>
-            
-            <h3>Introduction and Syntax</h3>
-            <pre>
-union Data {
-    int i;
-    float f;
-    char str[20];
-};
-            </pre>
-
-            <h3>Comparison between Structure and Union</h3>
-            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                <tr style="background: #6a11cb; color: white;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">Aspect</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Structure</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Union</th>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Memory</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Each member has separate memory</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">All members share same memory</td>
-                </tr>
-                <tr style="background: #f9f9f9;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">Size</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Sum of all members (with padding)</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Size of largest member</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Access</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">All members can be accessed</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Only one member can be accessed at a time</td>
-                </tr>
-                <tr style="background: #f9f9f9;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">Usage</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">When all data needs to be stored</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">When only one type of data is needed at a time</td>
-                </tr>
-            </table>
-
-            <pre>
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-union Data {
-    int i;
-    float f;
-    char str[20];
-};
-
-int main() {
-    union Data data;
-    
-    printf("Size of union: %lu bytes\n", sizeof(data));
-    
-    data.i = 10;
-    printf("data.i: %d\n", data.i);
-    
-    data.f = 220.5;
-    printf("data.f: %.2f\n", data.f);
-    
-    strcpy(data.str, "C Programming");
-    printf("data.str: %s\n", data.str);
-    printf("The program is executed by Nayan Kumar Gautam\n");
-    
-    return 0;
-}
-            </pre>
-         
-        </div>
-
-        <!-- Pointers Section -->
-        <div class="panel" id="pointers">
-            <h2>13. Pointers</h2>
-            
-            <h3>Introduction and Syntax</h3>
-            <pre>
-int var = 10;
-int *ptr = &var; // Pointer declaration and initialization
-            </pre>
-
-            <h3>Usage and Working</h3>
-            <pre>
+                <h4>Call by Value Example</h4>
+                <div class="code-header">Code</div>
+                <pre><code>
 #include &lt;stdio.h&gt;
 
-int main() {
-    int var = 10;
-    int *ptr = &var;
-    
-    printf("Value of var: %d\n", var);
-    printf("Address of var: %p\n", &var);
-    printf("Value of ptr: %p\n", ptr);
-    printf("Value pointed by ptr: %d\n", *ptr);
-    printf("The program is executed by Nayan Kumar Gautam\n");
-    
-    return 0;
-}
-            </pre>
-            
-
-            <h3>Concept of Value and Address</h3>
-            <ul>
-                <li><code>&</code> operator gives address of variable</li>
-                <li><code>*</code> operator dereferences pointer to get value</li>
-            </ul>
-
-            <h3>Declaration and Initialization</h3>
-            <pre>
-int *ptr1;          // Declaration
-int *ptr2 = NULL;   // Initialization with NULL
-int var = 5;
-int *ptr3 = &var;   // Initialization with address
-            </pre>
-
-            <h3>Pointer and Function</h3>
-            <pre>
-#include &lt;stdio.h&gt;
-
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void modifyValue(int num) {
+    num = num + 10;
+    printf("Inside function: %d\n", num);
 }
 
 int main() {
-    int x = 5, y = 10;
-    printf("Before swap: x = %d, y = %d\n", x, y);
-    swap(&x, &y);
-    printf("After swap: x = %d, y = %d\n", x, y);
-    printf("The program is executed by Nayan Kumar Gautam\n");
+    int x = 5;
+    printf("Before function call: %d\n", x);
+    modifyValue(x);
+    printf("After function call: %d\n", x);
     return 0;
 }
-            </pre>
-         
+                </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Before function call: 5<br>
+                    Inside function: 15<br>
+                    After function call: 5
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    In call by value, a copy of the variable is passed to the function. 
+                    Any changes made to the parameter inside the function do not affect the original variable.
+                </div>
 
-            <h3>Call by Reference</h3>
-            <pre>
+                <h4>Call by Reference Example</h4>
+                <div class="code-header">Code</div>
+                <pre><code>
 #include &lt;stdio.h&gt;
 
-void modifyValue(int *ptr) {
-    *ptr = *ptr * 2; // Double the value
+void modifyReference(int *num) {
+    *num = *num + 10;
+    printf("Inside function: %d\n", *num);
 }
 
 int main() {
-    int value = 5;
-    printf("Before modification: %d\n", value);
-    modifyValue(&value);
-    printf("After modification: %d\n", value);
-    printf("The program is executed by Nayan Kumar Gautam\n");
+    int x = 5;
+    printf("Before function call: %d\n", x);
+    modifyReference(&x);
+    printf("After function call: %d\n", x);
     return 0;
 }
-            </pre>
-            <div class="output-placeholder">
-                <b>Output Image</b>
-                <img src="placeholder.png" alt="Output of call by reference example"
-                    style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+                </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Before function call: 5<br>
+                    Inside function: 15<br>
+                    After function call: 15
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    In call by reference, the memory address of the variable is passed to the function. 
+                    Changes made to the value at that address affect the original variable.
+                </div>
             </div>
+        </section>
 
-            <h3>Comparison between Call by Value and Call by Reference</h3>
-            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                <tr style="background: #6a11cb; color: white;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">Aspect</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Call by Value</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Call by Reference</th>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Parameter</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Copy of value</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Address of variable</td>
-                </tr>
-                <tr style="background: #f9f9f9;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">Changes</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Not reflected in original</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Reflected in original</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Memory</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">More (creates copy)</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Less (uses address)</td>
-                </tr>
-                <tr style="background: #f9f9f9;">
-                    <td style="padding: 10px; border: 1px solid #ddd;">Safety</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">More (original safe)</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Less (original can be modified)</td>
-                </tr>
-            </table>
-
-            
-
- <h2>Pointers with Arrays</h2>
+        <section>
+            <div class="panel">
+                <h2>Pointers with Arrays</h2>
                 
                 <h3>Introduction</h3>
                 <p>Pointers and arrays have a close relationship in C. An array name is essentially a constant pointer to the first element of the array.</p>
                 
                 <h3>Code Example</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1509,6 +1556,22 @@ int main() {
     return 0;
 }
                 </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Array elements using pointer:<br>
+                    arr[0] = 10<br>
+                    arr[1] = 20<br>
+                    arr[2] = 30<br>
+                    arr[3] = 40<br>
+                    arr[4] = 50
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    The pointer 'ptr' is initialized to point to the first element of the array. 
+                    Using pointer arithmetic (ptr + i), we can access each element of the array.
+                </div>
                 
                 <h3>Advantages</h3>
                 <ul>
@@ -1528,14 +1591,15 @@ int main() {
             </div>
         </section>
         
-        <section id="structures">
+        <section>
             <div class="panel">
                 <h2>Structure and Union</h2>
                 
-                <h3 id="structures-intro">Structure: Introduction and Syntax</h3>
+                <h3>Structure: Introduction and Syntax</h3>
                 <p>A structure is a user-defined data type that groups related variables of different data types.</p>
                 
                 <h4>Syntax</h4>
+                <div class="code-header">Code</div>
                 <pre><code>
 struct structure_name {
     data_type member1;
@@ -1548,8 +1612,10 @@ struct structure_name {
                 <p>The size of a structure is the sum of sizes of all its members, plus possible padding added by the compiler for alignment.</p>
                 
                 <h3>Accessing Members of Structure</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
 struct Student {
     int id;
@@ -1573,7 +1639,21 @@ int main() {
 }
                 </code></pre>
                 
-                <h3 id="nested-structures">Nested Structure</h3>
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Student ID: 101<br>
+                    Student Name: John Doe<br>
+                    Percentage: 85.50
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    This example demonstrates how to declare a structure, create a structure variable, 
+                    and access its members using the dot operator.
+                </div>
+                
+                <h3>Nested Structure</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1600,7 +1680,22 @@ int main() {
 }
                 </code></pre>
                 
-                <h3 id="array-structures">Array of Structure</h3>
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Employee ID: 101<br>
+                    Employee Name: Alice<br>
+                    City: New York<br>
+                    State: NY
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    A nested structure is a structure within another structure. 
+                    Here, the Address structure is nested inside the Employee structure.
+                </div>
+                
+                <h3>Array of Structure</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1635,7 +1730,35 @@ int main() {
 }
                 </code></pre>
                 
-                <h3 id="function-structures">Passing Structure to Function</h3>
+                <div class="output-box">
+                    <strong>Output (example):</strong><br>
+                    Enter book 1 details:<br>
+                    ID: 101<br>
+                    Title: C_Programming<br>
+                    Price: 45.50<br>
+                    Enter book 2 details:<br>
+                    ID: 102<br>
+                    Title: Data_Structures<br>
+                    Price: 55.75<br>
+                    Enter book 3 details:<br>
+                    ID: 103<br>
+                    Title: Algorithms<br>
+                    Price: 60.25<br>
+                    <br>
+                    Library Books:<br>
+                    Book 1: ID=101, Title=C_Programming, Price=45.50<br>
+                    Book 2: ID=102, Title=Data_Structures, Price=55.75<br>
+                    Book 3: ID=103, Title=Algorithms, Price=60.25
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    This example shows how to create an array of structures. 
+                    Each element of the array is a structure that can store multiple data types.
+                </div>
+                
+                <h3>Passing Structure to Function</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1666,15 +1789,29 @@ int main() {
     return 0;
 }
                 </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Point coordinates: (5, 10)<br>
+                    Point coordinates: (15, 20)
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    Structures can be passed to functions by value or by reference. 
+                    When passed by value, a copy is created. When passed by reference using pointers, 
+                    the original structure can be modified.
+                </div>
             </div>
         </section>
         
-        <section id="unions">
+        <section>
             <div class="panel">
-                <h2 id="unions-intro">Union: Introduction and Syntax</h2>
+                <h2>Union: Introduction and Syntax</h2>
                 <p>A union is a user-defined data type that allows storing different data types in the same memory location.</p>
                 
                 <h4>Syntax</h4>
+                <div class="code-header">Code</div>
                 <pre><code>
 union union_name {
     data_type member1;
@@ -1682,6 +1819,55 @@ union union_name {
     // ...
 };
                 </code></pre>
+                
+                <h3>Union Example</h3>
+                <div class="code-header">Code</div>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+    
+    data.i = 10;
+    printf("data.i : %d\n", data.i);
+    
+    data.f = 220.5;
+    printf("data.f : %.2f\n", data.f);
+    
+    strcpy(data.str, "C Programming");
+    printf("data.str : %s\n", data.str);
+    
+    // Displaying all values after latest assignment
+    printf("data.i : %d\n", data.i);  // Undefined behavior
+    printf("data.f : %.2f\n", data.f); // Undefined behavior
+    printf("data.str : %s\n", data.str);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output (example):</strong><br>
+                    data.i : 10<br>
+                    data.f : 220.50<br>
+                    data.str : C Programming<br>
+                    data.i : 1917853763<br>
+                    data.f : 4120370580352792500000000000000.00<br>
+                    data.str : C Programming
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    A union uses the same memory location for all its members. 
+                    Only one member can contain a value at any given time. 
+                    The values of other members become undefined when a new member is assigned a value.
+                </div>
                 
                 <h3>Comparison between Structure and Union</h3>
                 <table>
@@ -1716,10 +1902,11 @@ union union_name {
         
         <section>
             <div class="panel">
-                <h2 id="pointers-intro">Pointers: Introduction and Syntax</h2>
+                <h2>Pointers: Introduction and Syntax</h2>
                 <p>A pointer is a variable that stores the memory address of another variable.</p>
                 
                 <h4>Syntax</h4>
+                <div class="code-header">Code</div>
                 <pre><code>
 data_type *pointer_name;
                 </code></pre>
@@ -1737,16 +1924,40 @@ data_type *pointer_name;
                 <p>Every variable has an address in memory where its value is stored. A pointer holds this address.</p>
                 
                 <h3>Declaration and Initialization</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
-int num = 10;     // Integer variable
-int *ptr;         // Pointer declaration
-ptr = &num;       // Pointer initialization with address of num
+#include &lt;stdio.h&gt;
 
-// Alternatively, declaration and initialization in one line
-int *ptr = &num;
+int main() {
+    int num = 10;     // Integer variable
+    int *ptr;         // Pointer declaration
+    ptr = &num;       // Pointer initialization with address of num
+
+    printf("Value of num: %d\n", num);
+    printf("Address of num: %p\n", &num);
+    printf("Value of ptr: %p\n", ptr);
+    printf("Value pointed by ptr: %d\n", *ptr);
+    
+    return 0;
+}
                 </code></pre>
                 
-                <h3 id="functions-pointers">Pointer and Function</h3>
+                <div class="output-box">
+                    <strong>Output (example):</strong><br>
+                    Value of num: 10<br>
+                    Address of num: 0x7ffd42a4a24c<br>
+                    Value of ptr: 0x7ffd42a4a24c<br>
+                    Value pointed by ptr: 10
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    The pointer 'ptr' stores the memory address of the variable 'num'. 
+                    The dereference operator (*) is used to access the value at that address.
+                </div>
+                
+                <h3>Pointer and Function</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1768,7 +1979,20 @@ int main() {
 }
                 </code></pre>
                 
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Before swap: x = 5, y = 10<br>
+                    After swap: x = 10, y = 5
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    By passing pointers to the function, we can modify the original variables. 
+                    This is an example of call by reference.
+                </div>
+                
                 <h3>Call by Reference with Code Example</h3>
+                <div class="code-header">Code</div>
                 <pre><code>
 #include &lt;stdio.h&gt;
 
@@ -1788,35 +2012,23 @@ int main() {
 }
                 </code></pre>
                 
-                <h3>Comparison between Call by Value and Call by Reference</h3>
-                <table>
-                    <tr>
-                        <th>Call by Value</th>
-                        <th>Call by Reference</th>
-                    </tr>
-                    <tr>
-                        <td>Passes copy of the value</td>
-                        <td>Passes address of the variable</td>
-                    </tr>
-                    <tr>
-                        <td>Original value not modified</td>
-                        <td>Original value can be modified</td>
-                    </tr>
-                    <tr>
-                        <td>Uses more memory for large data</td>
-                        <td>Efficient for large data structures</td>
-                    </tr>
-                    <tr>
-                        <td>Safer as original data protected</td>
-                        <td>Risk of unintended modifications</td>
-                    </tr>
-                </table>
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Before increment: 5<br>
+                    After increment: 6
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    The function increment() receives a pointer to the variable. 
+                    By dereferencing the pointer, it can modify the original value.
+                </div>
             </div>
         </section>
         
-        <section id="file-handling">
+        <section>
             <div class="panel">
-                <h2 id="file-concepts">File Handling</h2>
+                <h2>File Handling</h2>
                 
                 <h3>Concept of Data File</h3>
                 <p>A data file is a collection of related records stored in secondary storage. It provides persistent storage beyond program execution.</p>
@@ -1853,7 +2065,51 @@ int main() {
                     </tr>
                 </table>
                 
-                <h3 id="file-functions">File Handling Functions</h3>
+                <h3>File Handling Example</h3>
+                <div class="code-header">Code</div>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *file;
+    char data[100];
+    
+    // Writing to a file
+    file = fopen("example.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    fprintf(file, "Hello, File Handling in C!\n");
+    fclose(file);
+    
+    // Reading from a file
+    file = fopen("example.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    fgets(data, 100, file);
+    printf("Data from file: %s", data);
+    fclose(file);
+    
+    return 0;
+}
+                </code></pre>
+                
+                <div class="output-box">
+                    <strong>Output:</strong><br>
+                    Data from file: Hello, File Handling in C!
+                </div>
+                
+                <div class="explanation">
+                    <strong>Explanation:</strong>
+                    This example demonstrates basic file operations: writing to a file using fprintf() 
+                    and reading from a file using fgets(). The file is opened in write mode ("w") first, 
+                    then in read mode ("r").
+                </div>
+                
+                <h3>File Handling Functions</h3>
                 
                 <h4>fopen()</h4>
                 <p><strong>Purpose:</strong> Opens a file for reading, writing, or appending.</p>
@@ -1912,7 +2168,7 @@ int main() {
                 <p><strong>Syntax:</strong> int rename(const char *old_filename, const char *new_filename);</p>
             </div>
         </section>
-</main>
+    </main>
 
 <script>
     function toggleMenu() {
