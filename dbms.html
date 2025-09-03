@@ -770,9 +770,7 @@ body {
 </section>
 
 
-        <div class="hero">
-            <h2>Database Management Systems</h2>
-        </div>
+      
 
         <section id="centralized-distributed" class="panel">
             <h2>Centralized and Distributed Database</h2>
@@ -832,23 +830,9 @@ body {
             </table>
 
             <h3>Comparison (with Diagram)</h3>
-            <div class="diagram">
-                <div class="diagram-content">
-                    <pre>
-Centralized Database         Distributed Database
-    +------------+            +------------+  Network  +------------+
-    |            |            |            |<--------->|            |
-    |   Server   |            |  Server 1  |           |  Server 2  |
-    |            |            |            |<--------->|            |
-    +------------+            +------------+           +------------+
-         ^                           ^                        ^
-         |                           |                        |
-    +----+----+                 +----+----+             +----+----+
-    |  User   |                 |  User   |             |  User   |
-    +---------+                 +---------+             +---------+
-                    </pre>
-                </div>
-            </div>
+      <img src="cvd.png" alt="cvd"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+        </div>
 
             <table>
                 <tr>
@@ -1042,38 +1026,10 @@ Centralized Database         Distributed Database
             </table>
 
             <h3>Simple ER Diagram Example</h3>
-            <p>This diagram shows a <code>Student</code> entity and a <code>Course</code> entity in a Many-to-Many (M:N) relationship named <code>Enrolls</code>. The <code>Student</code> entity has key, simple, and composite attributes.</p>
-            <div class="diagram">
-                <div class="diagram-content">
-                    <pre>
-    +-----------------------+
-    |       STUDENT         |
-    +-----------------------+
-    | StudentID (PK)        |
-    | FirstName             |
-    | LastName              |
-    | DateOfBirth           |
-    +-----------------------+
-            |           |
-            |           |
-            | N         | M
-    +-------|-----------|-------+
-    |       ENROLLS_IN          |
-    +---------------------------+
-            |           |
-            |           |
-            |           |
-    +-------|-----------|-------+
-    |       COURSE             |
-    +---------------------------+
-    | CourseID (PK)            |
-    | CourseName               |
-    +---------------------------+
-                    </pre>
-                </div>
-            </div>
-        </section>
-    
+          
+               <img src="er.jpg" alt="ER"
+                style="display: block; max-width: 100%; height: auto; margin: 0 auto;">
+        </div>
 
   </main>
 
@@ -1093,5 +1049,6 @@ Centralized Database         Distributed Database
 </body>
 
 </html>
+
 
 
